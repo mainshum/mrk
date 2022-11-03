@@ -1,0 +1,21 @@
+---
+import {PrismaClient} from '@prisma/client';
+import CityButton from '../components/CityButton.astro';
+
+const prisma = new PrismaClient();
+console.log('tutaj')
+const cities = await prisma.city.findMany({})
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		{cities.map(c => <CityButton name={c.name} />)}
+	</body>
+</html>

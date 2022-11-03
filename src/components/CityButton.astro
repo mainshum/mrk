@@ -1,0 +1,21 @@
+---
+interface Props {
+    name: string
+}
+
+const {name} = Astro.props;
+---
+<style>
+    button {
+        border: 2px solid white;
+    }
+    button:hover {
+        background: orange;
+    }
+</style>
+
+<button>
+    <a href={`/gabinety/${name}`}>
+    {name}
+    </a>
+</button>
