@@ -1,18 +1,22 @@
 ---
 import {PrismaClient} from '@prisma/client';
-
-
 export async function getStaticPaths() {
 
     const prisma = new PrismaClient();
-    const cities = await prisma.city.findMany({})
+    //const gabinety = await prisma.gabinet.findMany({})
+    const miasta = await prisma.miasto.findMany({
+        include: {
+            gabinety: true
+        }
+    });
 
-    return cities.map(c => ({
-        params: {city: c.name}
+    return miasta.map(c => ({
+        params: ({city: c.name}),
+        props: {gabinety: c.gabinety}
     }));
 }
 
-const {city} = Astro.params;
+const {gabinety} = Astro.props;
 ---
 
 <style>
@@ -20,5 +24,6 @@ const {city} = Astro.params;
 </style>
 
 <div>
-    {city}
+    {gabinety.map(d => JSON.stringify(d))}
+    <!-- {city.} -->
 </div>

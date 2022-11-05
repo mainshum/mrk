@@ -7,7 +7,20 @@ generator client {
     provider = "prisma-client-js"
 }
 
-model City {
+model Miasto {
     id  Int @id @default(autoincrement())
     name String @db.VarChar(255)
+    gabinety Gabinet[]
+}
+
+model Gabinet {
+    id  Int @id @default(autoincrement())
+    miasto_id Int
+    imie String @db.VarChar(255)
+    gabinet String @db.VarChar(255)
+    adres String @db.VarChar(255)
+    telefon String @db.VarChar(255)
+    mail String @db.VarChar(255) 
+    url String @db.VarChar(255)
+    miasto Miasto @relation(fields: [miasto_id], references: [id])
 }

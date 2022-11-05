@@ -6,3 +6,8 @@
 - [ ] Layout dla strony (z globalnym css), wykorzystac na stronie z gabinetami
 - [ ] Styling strony z gabinetem
   - [ ] Trzecia sekcja opcjonalna
+
+
+
+  <SomeContainer>
+  </SOme>

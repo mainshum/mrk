@@ -3,8 +3,7 @@ import {PrismaClient} from '@prisma/client';
 import CityButton from '../components/CityButton.astro';
 
 const prisma = new PrismaClient();
-console.log('tutaj')
-const cities = await prisma.city.findMany({})
+const cities = await prisma.miasto.findMany({});
 ---
 
 <html lang="en">
