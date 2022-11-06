@@ -7,20 +7,28 @@ generator client {
     provider = "prisma-client-js"
 }
 
-model Miasto {
+model City {
     id  Int @id @default(autoincrement())
     name String @db.VarChar(255)
-    gabinety Gabinet[]
+    drs Doctor[]
 }
 
-model Gabinet {
-    id  Int @id @default(autoincrement())
-    miasto_id Int
-    imie String @db.VarChar(255)
-    gabinet String @db.VarChar(255)
-    adres String @db.VarChar(255)
-    telefon String @db.VarChar(255)
-    mail String @db.VarChar(255) 
-    url String @db.VarChar(255)
-    miasto Miasto @relation(fields: [miasto_id], references: [id])
+model Spec {
+    id Int @id @default(autoincrement()) // primary key
+    name String @db.VarChar(255)
+    drs Doctor[]
+}
+
+model Doctor {
+    id Int @id @default(autoincrement())
+    name String @db.VarChar(255)
+    room String @db.VarChar(255)
+    address String? @db.VarChar(255)
+    phone String? @db.VarChar(255)
+    mail String? @db.VarChar(255) 
+    url String? @db.VarChar(255)
+    city_id Int 
+    spec_id Int
+    city City @relation(fields: [city_id], references: [id])
+    spec Spec @relation(fields: [spec_id], references: [id])
 }

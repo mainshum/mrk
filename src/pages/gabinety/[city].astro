@@ -1,30 +1,52 @@
 ---
-import {Gabinet, PrismaClient} from '@prisma/client';
+import {Spec, PrismaClient, Doctor, City} from '@prisma/client';
 import Main from '../../layouts/Main.astro';
 
+interface Specialization {
+    specName: string
+    drs: Doctor[]
+}
+
 interface Props {
-    gabinety: Gabinet[]
+    specializations: Specialization[]
 }
 
 export async function getStaticPaths() {
 
     const prisma = new PrismaClient();
-    //const gabinety = await prisma.gabinet.findMany({})
-    const miasta = await prisma.miasto.findMany({
+
+    const citiesWithDoctorsData = await prisma.city.findMany({
         include: {
-            gabinety: true
+            drs: true
         }
     });
 
-    return miasta.map(c => ({
+    const specsData = await prisma.spec.findMany({});
+
+    const reduceSection = (city: City) => (acc: Specialization[], spec: Spec) => {
+        const doctorsInSection = citiesWithDoctorsData
+            .flatMap(d => d.drs)
+            .filter(dr => dr.city_id === city.id && dr.spec_id === spec.id);
+
+        if (doctorsInSection.length === 0)
+            return acc;
+        
+        return acc.concat({
+            specName: spec.name,
+            drs: doctorsInSection
+        });
+    }
+
+    return citiesWithDoctorsData.map(c => ({
         params: ({city: c.name}),
-        props: {gabinety: c.gabinety}
+        props: {specializations: specsData.reduce(reduceSection(c), [])}
     }));
 }
 
-const {gabinety} = Astro.props;
+const {specializations} = Astro.props;
 const {city} = Astro.params;
 ---
+
 
 <style>
     header {
@@ -35,7 +57,7 @@ const {city} = Astro.params;
         padding: 20px;
         color: var(--secondary-color);
     }
-    .row {
+    .specializations {
         width: calc(100% + 2px);
         min-height: calc(100vh - var(--header-h));
         display: flex;
@@ -43,20 +65,18 @@ const {city} = Astro.params;
         background: var(--primary-color);
         color: var(--secondary-color);
     }
-    .specialists:first-child {
+    .spec:nth-child(n+1) {
         border-right: 2px solid var(--secondary-color);
-    }
-    .specialists {
         border-top: 2px solid var(--secondary-color);
         padding: 20px;
         flex-basis: calc(50% - 1px);
         flex-grow: 1;
         flex-shrink: 1;
     }
-    .specialists ul {
+    .traits {
         list-style: none;
     }
-    .specialists ul li {
+    .traits li {
         padding: 10px 0px;
     }
 </style>
@@ -64,28 +84,19 @@ const {city} = Astro.params;
     <header>
         <h1>{city}</h1>
     </header>
-    <div class="row">
-        <section class="specialists">
-            <h2>Ginekolodzy</h2>
-            {gabinety.map(d => (
-                <ul>
-                    <li>{d.gabinet}</li>
-                    <li>{d.imie}</li>
-                    <li>{d.adres}</li>
-                    <li>{d.telefon}</li>
-                </ul>
-            ))}
-        </section>
-        <section class="specialists">
-            <h2>NieGinekolodzy</h2>
-            {gabinety.map(d => (
-                <ul>
-                    <li>{d.gabinet}</li>
-                    <li>{d.imie}</li>
-                    <li>{d.adres}</li>
-                    <li>{d.telefon}</li>
-                </ul>
-            ))}
-        </section>
-    </div>
+    <section class="specializations">
+        {specializations.map(s => (
+            <div class="spec">
+                <h2>{s.specName}</h2>
+                {s.drs.map(d => (
+                    <ul class="traits">
+                        <li>{d.room}</li>
+                        <li>{d.name}</li>
+                        <li>{d.address}</li>
+                        <li>{d.phone}</li>
+                    </ul>
+                ))}
+            </div>
+        ))}
+    </section>
 </Main>
