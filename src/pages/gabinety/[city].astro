@@ -1,5 +1,11 @@
 ---
-import {PrismaClient} from '@prisma/client';
+import {Gabinet, PrismaClient} from '@prisma/client';
+import Main from '../../layouts/Main.astro';
+
+interface Props {
+    gabinety: Gabinet[]
+}
+
 export async function getStaticPaths() {
 
     const prisma = new PrismaClient();
@@ -17,13 +23,69 @@ export async function getStaticPaths() {
 }
 
 const {gabinety} = Astro.props;
+const {city} = Astro.params;
 ---
 
 <style>
-    div {background-color: red;}
+    header {
+        background: var(--primary-color);
+        height: var(--header-h);
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        color: var(--secondary-color);
+    }
+    .row {
+        width: calc(100% + 2px);
+        min-height: calc(100vh - var(--header-h));
+        display: flex;
+        flex-wrap: wrap;
+        background: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    .specialists:first-child {
+        border-right: 2px solid var(--secondary-color);
+    }
+    .specialists {
+        border-top: 2px solid var(--secondary-color);
+        padding: 20px;
+        flex-basis: calc(50% - 1px);
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+    .specialists ul {
+        list-style: none;
+    }
+    .specialists ul li {
+        padding: 10px 0px;
+    }
 </style>
-
-<div>
-    {gabinety.map(d => JSON.stringify(d))}
-    <!-- {city.} -->
-</div>
+<Main>
+    <header>
+        <h1>{city}</h1>
+    </header>
+    <div class="row">
+        <section class="specialists">
+            <h2>Ginekolodzy</h2>
+            {gabinety.map(d => (
+                <ul>
+                    <li>{d.gabinet}</li>
+                    <li>{d.imie}</li>
+                    <li>{d.adres}</li>
+                    <li>{d.telefon}</li>
+                </ul>
+            ))}
+        </section>
+        <section class="specialists">
+            <h2>NieGinekolodzy</h2>
+            {gabinety.map(d => (
+                <ul>
+                    <li>{d.gabinet}</li>
+                    <li>{d.imie}</li>
+                    <li>{d.adres}</li>
+                    <li>{d.telefon}</li>
+                </ul>
+            ))}
+        </section>
+    </div>
+</Main>

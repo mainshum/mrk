@@ -1,9 +1,10 @@
 ---
 interface Props {
     name: string
+    href: string
 }
 
-const {name} = Astro.props;
+const {name, href} = Astro.props;
 ---
 <style>
     button {
@@ -15,7 +16,7 @@ const {name} = Astro.props;
 </style>
 
 <button>
-    <a href={`/gabinety/${name}`}>
+    <a href={href}>
     {name}
     </a>
 </button>
