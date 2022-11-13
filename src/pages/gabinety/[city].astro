@@ -1,46 +1,9 @@
 ---
-import {Spec, PrismaClient, Doctor, City} from '@prisma/client';
 import Main from '../../layouts/Main.astro';
-
-interface Specialization {
-    specName: string
-    drs: Doctor[]
-}
+import type { Specialization } from '../../types';
 
 interface Props {
     specializations: Specialization[]
-}
-
-export async function getStaticPaths() {
-
-    const prisma = new PrismaClient();
-
-    const citiesWithDoctorsData = await prisma.city.findMany({
-        include: {
-            drs: true
-        }
-    });
-
-    const specsData = await prisma.spec.findMany({});
-
-    const reduceSection = (city: City) => (acc: Specialization[], spec: Spec) => {
-        const doctorsInSection = citiesWithDoctorsData
-            .flatMap(d => d.drs)
-            .filter(dr => dr.city_id === city.id && dr.spec_id === spec.id);
-
-        if (doctorsInSection.length === 0)
-            return acc;
-        
-        return acc.concat({
-            specName: spec.name,
-            drs: doctorsInSection
-        });
-    }
-
-    return citiesWithDoctorsData.map(c => ({
-        params: ({city: c.name}),
-        props: {specializations: specsData.reduce(reduceSection(c), [])}
-    }));
 }
 
 const {specializations} = Astro.props;

@@ -9,7 +9,7 @@ const cities = await prisma.city.findMany({});
 
 <Main>
 	{cities.map(c => (
-		<CityButton href={`/gabinety/${c.name}`} name={c.name}/>
+		<CityButton href={`/gabinety/${c.id}`} name={c.name}/>
 	))}
 </Main>
 
