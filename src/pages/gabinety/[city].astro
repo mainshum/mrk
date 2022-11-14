@@ -6,7 +6,10 @@ interface Props {
     specializations: Specialization[]
 }
 
-const {specializations} = Astro.props;
+const response = await fetch('https://mrk-umber.vercel.app//api/specs/1');
+const data = await response.json();
+
+const specializations = data as Specialization[];
 const {city} = Astro.params;
 ---
 
