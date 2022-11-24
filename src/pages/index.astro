@@ -3,6 +3,7 @@ import {City, PrismaClient} from '@prisma/client';
 import CityButton from '../components/CityButton.astro';
 import Main from '../layouts/Main.astro';
 
+console.log('Index page');
 const prisma = new PrismaClient();
 const cities = await prisma.city.findMany({});
 ---
