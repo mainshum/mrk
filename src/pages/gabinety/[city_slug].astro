@@ -1,17 +1,42 @@
 ---
+import { PrismaClient, Doctor, Spec } from '@prisma/client';
 import Main from '../../layouts/Main.astro';
-import type { Specialization } from '../../types';
+import type { Specialization} from '../../types';
 
-interface Props {
-    specializations: Specialization[]
+const reduceSpec = (drs: Doctor[]) => (acc: Specialization[], cv: Spec) => 
+  acc.concat({specName: cv.name, drs: drs.filter(d => d.spec_id === cv.id)});
+
+export async function getStaticPaths() {
+    const client = new PrismaClient();
+    const ac = await client.city.findMany({});
+    return ac.map(({id, name, slug}) => ({ params: {city_slug: slug} }))
 }
 
+const client = new PrismaClient();
+const allCities = await client.city.findMany({});
+const {city_slug} = Astro.params;
+const mCity = allCities.find(d => d.slug === city_slug);
 
-const {city} = Astro.params;
+if (!mCity)
+    throw new Error(`${city_slug} does not match any city`);
 
-const response = await fetch(`https://mrk-umber.vercel.app/api/specs/${city}`);
-const data = await response.json();
-const specializations = data as Specialization[];
+const {name} = mCity;
+
+const specsPr = client.spec.findMany({})
+
+const drsPr = client.doctor.findMany({
+    where: {city_id: mCity.id}
+});
+
+const [specs, drs] = await Promise.all([specsPr, drsPr]);
+
+const withDoctors = reduceSpec(drs);
+
+const nonEmptySpecs = (s: Specialization) => s.drs.length > 0;
+
+const specializations: Specialization[] = specs
+    .reduce(withDoctors, [])
+    .filter(nonEmptySpecs)
 ---
 
 
@@ -50,7 +75,7 @@ const specializations = data as Specialization[];
 </style>
 <Main>
     <header>
-        <h1>{city}</h1>
+        <h1>{name}</h1>
     </header>
     <section class="specializations">
         {specializations.map(s => (

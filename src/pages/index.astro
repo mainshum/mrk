@@ -3,14 +3,13 @@ import {City, PrismaClient} from '@prisma/client';
 import CityButton from '../components/CityButton.astro';
 import Main from '../layouts/Main.astro';
 
-console.log('Index page');
 const prisma = new PrismaClient();
 const cities = await prisma.city.findMany({});
 ---
 
 <Main>
 	{cities.map(c => (
-		<CityButton href={`/gabinety/${c.id}`} name={c.name}/>
+		<CityButton href={`/gabinety/${c.slug}`} name={c.name}/>
 	))}
 </Main>
 
