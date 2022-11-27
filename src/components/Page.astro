@@ -4,9 +4,6 @@ const {color} = Astro.props;
 ---
 
 <style>
-    .page { 
-        min-height: 100vh; 
-    }
     .body {
         padding: 16px;
     }
@@ -19,6 +16,11 @@ const {color} = Astro.props;
         background: var(--secondary-color);
         border-color: var(--primary-color);
         color: var(--primary-color);
+    }
+    .body {
+        min-height: calc(100vh - var(--header-h));
+        margin-right: calc(var(--header-h) - 2px);
+        border-right: 2px solid;
     }
 </style>
 
