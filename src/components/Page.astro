@@ -1,0 +1,30 @@
+---
+
+const {color} = Astro.props;
+---
+
+<style>
+    .page { 
+        min-height: 100vh; 
+    }
+    .body {
+        padding: 16px;
+    }
+    .violet {
+        background: var(--primary-color);
+        border-color: var(--secondary-color);
+        color: var(--secondary-color);
+    }
+    .white {
+        background: var(--secondary-color);
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+</style>
+
+<div class:list={['page', {violet: color === 'violet'}, {white: color === 'white'}]}>
+    <slot name="header"></slot>
+    <div class="body">
+        <slot name="body"></slot>
+    </div>
+</div>
