@@ -1,0 +1,26 @@
+---
+
+interface Props {
+    lang: 'pl' | 'en' | 'uk'
+}
+
+import { PrismaClient } from "@prisma/client";
+import CityButton from './CityButton.astro';
+import Page from './Page.astro';
+import PageTitle from './PageTitle.astro';
+import Header from '../layouts/Header.astro';
+
+const prisma = new PrismaClient();
+const cities = await prisma.city.findMany({});
+---
+
+<Page color="violet">
+    <Header slot="header">
+        <PageTitle slot="lhs" title="Lista gabinetow lekarskich" />
+    </Header>
+    <div class="dr-buttons" slot="body">
+        {cities.map(c => (
+            <CityButton href={`/gabinety/${c.slug}`} name={c.name}/>
+        ))}
+    </div>
+</Page>

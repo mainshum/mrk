@@ -1,0 +1,28 @@
+---
+interface Props {
+    lang: Lang
+}
+
+import Main from "../layouts/Main.astro";
+import Page from "./Page.astro";
+import PageTitle from "./PageTitle.astro";
+import CityButton from "./CityButton.astro";
+import Header from "../layouts/Header.astro";
+import Gabinety from "./Gabinety.astro";
+import type { Lang } from "../types";
+
+const {lang} = Astro.props;
+---
+
+<Main>
+	{lang !== 'pl' ? null : (
+		<Gabinety lang={lang} />
+	)}
+	<Page color="white">
+		<Header slot="header">
+			<PageTitle slot="lhs" title="Lista kontaktow" />
+		</Header>
+		<div slot="body">
+		</div>
+	</Page>
+</Main>

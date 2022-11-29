@@ -1,13 +1,5 @@
 ---
-import {PrismaClient} from '@prisma/client';
-import CityButton from '../components/CityButton.astro';
-import Page from '../components/Page.astro';
-import PageTitle from '../components/PageTitle.astro';
-import Main from '../layouts/Main.astro';
-import Header from '../layouts/Header.astro';
-
-const prisma = new PrismaClient();
-const cities = await prisma.city.findMany({});
+import Bezpestkowe from '../components/Bezpestkowe.astro';
 ---
 <style>
 	.dr-buttons {
@@ -17,16 +9,4 @@ const cities = await prisma.city.findMany({});
 	}
 </style>
 
-<Main>
-	<Page color="violet">
-		<Header slot="header">
-			<PageTitle slot="lhs" title="Lista gabinetow lekarskich" />
-		</Header>
-		<div class="dr-buttons" slot="body">
-			{cities.map(c => (
-				<CityButton href={`/gabinety/${c.slug}`} name={c.name}/>
-			))}
-		</div>
-	</Page>
-</Main>
-
+<Bezpestkowe lang="pl" />

@@ -1,0 +1,25 @@
+---
+import Bezpestkowe from '../components/Bezpestkowe.astro';
+import { allowed, Lang } from '../types';
+
+function guard(s: string | number | undefined): s is Lang  {
+    if (!s) 
+        return false;
+    return allowed.includes(s.toString());
+}
+
+export function getStaticPaths() {
+    return [
+        {params: {lang: 'en'}},
+        {params: {lang: 'pl'}},
+        {params: {lang: 'uk'}},
+    ];
+}
+
+const {lang} = Astro.params;
+
+if (!guard(lang))
+    throw new Error('Unallowed lang');
+---
+
+<Bezpestkowe lang={lang} />
