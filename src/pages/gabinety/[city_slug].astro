@@ -1,31 +1,36 @@
 ---
-import { PrismaClient, Doctor, Spec } from '@prisma/client';
-import Main from '../../layouts/Main.astro';
-import type { Specialization} from '../../types';
+import { PrismaClient, Doctor, Spec } from "@prisma/client";
+import Page from "../../components/Page.astro";
+import Header from "../../layouts/Header.astro";
+import PageTitle from "../../components/PageTitle.astro";
+import type { Specialization } from "../../types";
+import Main from "../../layouts/Main.astro";
 
-const reduceSpec = (drs: Doctor[]) => (acc: Specialization[], cv: Spec) => 
-  acc.concat({specName: cv.name, drs: drs.filter(d => d.spec_id === cv.id)});
+const reduceSpec = (drs: Doctor[]) => (acc: Specialization[], cv: Spec) =>
+  acc.concat({
+    specName: cv.name,
+    drs: drs.filter((d) => d.spec_id === cv.id),
+  });
 
 export async function getStaticPaths() {
-    const client = new PrismaClient();
-    const ac = await client.city.findMany({});
-    return ac.map(({id, name, slug}) => ({ params: {city_slug: slug} }))
+  const client = new PrismaClient();
+  const ac = await client.city.findMany({});
+  return ac.map(({ id, name, slug }) => ({ params: { city_slug: slug } }));
 }
 
 const client = new PrismaClient();
 const allCities = await client.city.findMany({});
-const {city_slug} = Astro.params;
-const mCity = allCities.find(d => d.slug === city_slug);
+const { city_slug } = Astro.params;
+const mCity = allCities.find((d) => d.slug === city_slug);
 
-if (!mCity)
-    throw new Error(`${city_slug} does not match any city`);
+if (!mCity) throw new Error(`${city_slug} does not match any city`);
 
-const {name} = mCity;
+const { name } = mCity;
 
-const specsPr = client.spec.findMany({})
+const specsPr = client.spec.findMany({});
 
 const drsPr = client.doctor.findMany({
-    where: {city_id: mCity.id}
+  where: { city_id: mCity.id },
 });
 
 const [specs, drs] = await Promise.all([specsPr, drsPr]);
@@ -35,61 +40,56 @@ const withDoctors = reduceSpec(drs);
 const nonEmptySpecs = (s: Specialization) => s.drs.length > 0;
 
 const specializations: Specialization[] = specs
-    .reduce(withDoctors, [])
-    .filter(nonEmptySpecs)
+  .reduce(withDoctors, [])
+  .filter(nonEmptySpecs);
 ---
 
-
 <style>
-    header {
-        background: var(--primary-color);
-        height: var(--header-h);
-        display: flex;
-        align-items: center;
-        padding: 20px;
-        color: var(--secondary-color);
-    }
-    .specializations {
-        width: calc(100% + 2px);
-        min-height: calc(100vh - var(--header-h));
-        display: flex;
-        flex-wrap: wrap;
-        background: var(--primary-color);
-        color: var(--secondary-color);
-    }
-    .spec:nth-child(n+1) {
-        border-right: 2px solid var(--secondary-color);
-        border-top: 2px solid var(--secondary-color);
-        padding: 20px;
-        flex-basis: calc(50% - 1px);
-        flex-grow: 1;
-        flex-shrink: 1;
-    }
-    .traits {
-        list-style: none;
-        padding-top: 40px;
-    }
-    .traits li {
-        padding: 10px 0px;
-    }
+  .specializations {
+    width: calc(100% + 4px);
+    min-height: calc(100vh - var(--header-h));
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+  }
+  .spec {
+    /* border-right: 2px solid var(--secondary-color); */
+    /* border-top: 2px solid var(--secondary-color); */
+    padding: 20px;
+    flex-basis: calc(50% - 1px);
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  .traits {
+    list-style: none;
+    padding-top: 40px;
+  }
+  .traits li {
+    padding: 10px 0px;
+  }
 </style>
 <Main>
-    <header>
-        <h1>{name}</h1>
-    </header>
-    <section class="specializations">
-        {specializations.map(s => (
-            <div class="spec">
-                <h2>{s.specName}</h2>
-                {s.drs.map(d => (
-                    <ul class="traits">
+    <Page color="violet">
+        <Header slot="header">
+            <PageTitle slot="lhs" title="Lista gabinetow lekarskich" />
+        </Header>
+        <section class="specializations" slot="body">
+            <>
+            {specializations.map((s) => (
+                <div class="spec">
+                    <h2>{s.specName}</h2>
+                    {s.drs.map((d) => (
+                        <ul class="traits">
                         <li>{d.room}</li>
                         <li>{d.name}</li>
                         <li>{d.address}</li>
                         <li>{d.phone}</li>
-                    </ul>
-                ))}
-            </div>
-        ))}
-    </section>
+                        </ul>
+                    ))}
+                </div>
+            ))}
+            </>
+        </section>
+    </Page>
 </Main>
