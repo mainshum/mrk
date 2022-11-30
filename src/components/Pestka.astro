@@ -1,0 +1,33 @@
+---
+interface Props {
+    width: number
+    alt: string
+}
+import pestka from '@images/pestka.svg';
+
+const {width, alt} = Astro.props;
+---
+<style>
+    .pestka {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .slot {
+        z-index: 1;
+        color: var(--secondary-color);
+    }
+</style>
+
+<div class="pestka" style={{width: `${width}px`, height: `${width}px`}}>
+    <img width="100%" height="100%" src={pestka} alt={alt}>
+    <div class="slot">
+        <slot />
+    </div>
+</div>

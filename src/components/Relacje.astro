@@ -7,6 +7,7 @@ import Page from "./Page.astro";
 import Header from '../layouts/Header.astro';
 import PageTitle from "./PageTitle.astro";
 import type { Lang } from "../types";
+import Pestka from "./Pestka.astro";
 
 const plTrans = {
     header: "Relacje i macierzyństwo",
@@ -16,7 +17,7 @@ const plTrans = {
     pestka1: "Pierwszą możliwością jest transplantacja macicy (przyp. red. przeszczep), która wciąż jest uznawana za leczenie eksperymentalne i ze względów anatomicznych nie może być przeprowadzona u wszystkich pacjentek z zespołem MRKH. Aktualnie na świecie jest ponad dziesięcioro dzieci urodzonych przez pacjentki z zespołem MRKH. Do tej pory najbardziej znane precedensy to te z 2014 i 2017 roku, kiedy kolejno w Szwecji i Brazylii pacjentki z zespołem MRKH urodziły żywe dzieci — w pierwszym przypadku z macicy przeszczepionej od żyjącej dawczyni, w drugim od zmarłej. Macica nie jest narządem niezbędnym do życia i przeszczepia się ją tylko i wyłącznie na potrzeby jednej ciąży (po porodzie zostaje ona usunięta). Choć operacja jest bardzo skomplikowana i obciążająca zarówno dla dawczyni, jak i dla biorczyni, jest możliwa.",
     pestka2: "Drugą możliwością jest surogacja, która polega na zapłodnieniu pozamacicznym z transferem zarodka do matki zastępczej (przyp. red. surogatki). W ten sposób pacjentka z zespołem MRKH może być genetycznym rodzicem, ponieważ z punktu widzenia jajnikowego osoby z zespołem MRKH są płodne.",
     pestka3: `Trzecią (i obecnie jedyną dostępną w Polsce z punktu prawnego) możliwością jest adopcja, jednak w celu rozpoczęcia procedury adopcyjnej należy być w co najmniej czteroletnim związku małżeńskim.`,
-    pestka3_2: `The third (and currently the only legally available in Poland) option is adoption, but in order to initiate the adoption procedure, one must be married for at least four years.`
+    pestka3_2: `Warto podkreślić, że są osoby, które realizują potrzebę rodzicielstwa w inny sposób, np. związując się z osobą, która ma dziecko/dzieci, angażując się jako opiekunka, bliska przyjaciółka rodziny itd.`
 }
 
 type T = keyof typeof plTrans;
@@ -50,6 +51,19 @@ const {lang} = Astro.props;
 const trans = all[lang];
 
 ---
+<style>
+    .pestka {
+        padding: 20px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .pestka span {
+        font-size: 3rem;
+        color: var(--orange-color);
+    }
+</style>
 
 <Page color="white">
     <Header slot="header">
@@ -62,10 +76,25 @@ const trans = all[lang];
             <p>{trans.p3}</p>
         </section>
         <section class="peeps">
-            <p>{trans.pestka1}</p>
-            <p>{trans.pestka2}</p>
-            <p>{trans.pestka3}</p>
-            <p>{trans.pestka3_2}</p>
+            <div class="pestka">
+                <Pestka width={60} alt="Pestka-1">
+                    <span>1</span>
+                </Pestka>
+                <p>{trans.pestka1}</p>
+            </div>
+            <div class="pestka">
+                <Pestka width={60} alt="Pestka-2">
+                    <span>2</span>
+                </Pestka>
+                <p>{trans.pestka2}</p>
+            </div>
+            <div class="pestka">
+                <Pestka width={60} alt="Pestka-3">
+                    <span>3</span>
+                </Pestka>
+                <p>{trans.pestka3}</p>
+                <p>{trans.pestka3_2}</p>
+            </div>
         </section>
     </div>
 </Page>
