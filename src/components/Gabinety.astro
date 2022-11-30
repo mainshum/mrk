@@ -9,18 +9,43 @@ import CityButton from './CityButton.astro';
 import Page from './Page.astro';
 import PageTitle from './PageTitle.astro';
 import Header from '../layouts/Header.astro';
+import office from '@images/office.png';
+import beads from '@images/beads.png';
 
 const prisma = new PrismaClient();
 const cities = await prisma.city.findMany({});
 ---
+<style>
+    .gabinety {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .miasta {
+        flex-basis: 50%;
+        flex-grow: 1;
+    }
+    @media(max-width: 1100px) {
+        img {
+            display: none;
+        }
+    }
+    img {
+        height: 600px;
+    }
+</style>
 
 <Page color="violet">
     <Header slot="header">
         <PageTitle slot="lhs" title="Lista gabinetow lekarskich" />
     </Header>
-    <div class="dr-buttons" slot="body">
-        {cities.map(c => (
-            <CityButton href={`/gabinety/${c.slug}`} name={c.name}/>
-        ))}
+    <div class="gabinety" slot="body">
+        <div class="miasta">
+            {cities.map(c => (
+                <CityButton href={`/gabinety/${c.slug}`} name={c.name}/>
+            ))}
+        </div>
+        <img src={office} alt="Gabinet">
+        <img src={beads} alt="Beads">
     </div>
 </Page>
