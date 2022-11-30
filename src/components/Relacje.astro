@@ -1,0 +1,71 @@
+---
+interface Props {
+    lang: Lang
+}
+
+import Page from "./Page.astro";
+import Header from '../layouts/Header.astro';
+import PageTitle from "./PageTitle.astro";
+import type { Lang } from "../types";
+
+const plTrans = {
+    header: "Relacje i macierzyństwo",
+    p1: "Proces dojrzewania osób z zespołem MRKH (do momentu rozpoznania) przebiega w ten sam sposób, jak u osób pestkowych, wobec czego bezpestkowe zazwyczaj przyjmują kobiece role płciowe (ze względu na swój wygląd zewnętrzny, a nie zespół MRKH). Rolą terapeutów/-ek jest również wsparcie osób z zespołem MRKH w podejmowaniu kontaktów seksualnych, lub wspólne rozpoznanie powodu, dla którego ich nie podejmują. Rozmowa o blokadach i szukanie rozwiązań służy osiągnięciu satysfakcji w sferze seksualnej.",
+    p2: "Każda osoba, niezależnie od posiadania lub nieposiadania pestki, jest zbudowana w inny sposób — nasze ciała, ich wygląd i funkcjonalność różnią się od siebie. Jeśli obawiasz się, że partner/-ka seksualny/-a rozpozna, że Twoja pochwa została wytworzona, zapewniamy, że nie ma powodów do zmartwień — z laickiego punktu widzenia nie jesteśmy w stanie rozpoznać, czy mamy kontakt seksualny z osobą, która urodziła się z pochwą, czy z osobą, która ma neo-waginę. Kolejną konsekwencją związaną z byciem bezpestkową jest niemożność zajścia w ciążę i urodzenia dziecka. Zazwyczaj w momencie rozpoznania zespołu MRKH ta informacja jest trudniejsza do przyjęcia przez rodziców/opiekunów osób bezpestkowych. Oczywiście posiadanie zespołu MRKH nie wyklucza zostania rodzicem (oczywiście o ile tego w ogóle chcemy). Istnieją na to różne sposoby:",
+    p3: '',
+    pestka1: "Pierwszą możliwością jest transplantacja macicy (przyp. red. przeszczep), która wciąż jest uznawana za leczenie eksperymentalne i ze względów anatomicznych nie może być przeprowadzona u wszystkich pacjentek z zespołem MRKH. Aktualnie na świecie jest ponad dziesięcioro dzieci urodzonych przez pacjentki z zespołem MRKH. Do tej pory najbardziej znane precedensy to te z 2014 i 2017 roku, kiedy kolejno w Szwecji i Brazylii pacjentki z zespołem MRKH urodziły żywe dzieci — w pierwszym przypadku z macicy przeszczepionej od żyjącej dawczyni, w drugim od zmarłej. Macica nie jest narządem niezbędnym do życia i przeszczepia się ją tylko i wyłącznie na potrzeby jednej ciąży (po porodzie zostaje ona usunięta). Choć operacja jest bardzo skomplikowana i obciążająca zarówno dla dawczyni, jak i dla biorczyni, jest możliwa.",
+    pestka2: "Drugą możliwością jest surogacja, która polega na zapłodnieniu pozamacicznym z transferem zarodka do matki zastępczej (przyp. red. surogatki). W ten sposób pacjentka z zespołem MRKH może być genetycznym rodzicem, ponieważ z punktu widzenia jajnikowego osoby z zespołem MRKH są płodne.",
+    pestka3: `Trzecią (i obecnie jedyną dostępną w Polsce z punktu prawnego) możliwością jest adopcja, jednak w celu rozpoczęcia procedury adopcyjnej należy być w co najmniej czteroletnim związku małżeńskim.`,
+    pestka3_2: `The third (and currently the only legally available in Poland) option is adoption, but in order to initiate the adoption procedure, one must be married for at least four years.`
+}
+
+type T = keyof typeof plTrans;
+
+const all: Record<Lang, Record<T, string>> = {
+    "pl": plTrans,
+    "en": {
+        header: 'Relationships and parenthood',
+        p1: 'MRKH puberty (up to the point of diagnosis) follows the same patterns as a cis women’s puberty, so Bezpestkowe usually take on female gender roles (because of their physical appearance, not MRKH syndrome).',
+        p2: 'The role of a therapist is to support people with MRKH in engaging in sexual contacts, or to jointly identify the reason why they do not. Talking through the mental blocks and finding solutions to them helps achieve sexual satisfaction.',
+        p3: `Each person, regardless of having or not having a seed, is built differently - our bodies, their appearance and functionality are different. If you are concerned that your sexual partner(s) will recognise that your vagina has been produced, we assure you that there is no need to worry - from a layperson's point of view, we are unable to recognise whether we are having sexual contact with a person who was born with a vagina or a person who has a neo-vagina. Another consequence associated with MRKH syndrome is the inability to get pregnant and give birth. Usually when MRKH is identified, this information is more difficult for parents/carers of Bezpestkowe to accept. Of course, having MRKH does not preclude you from becoming a parent (that is of course if you want to become one at all). There are different ways to do this:`,
+        pestka1: `The first option is uterine transplantation, which is still considered an experimental treatment and for anatomical reasons cannot be performed on all patients with MRKH syndrome. Currently, there are more than ten children born to patients with MRKH in the world. To date, the best-known precedents are those of 2014 and 2017, when, in Sweden and Brazil respectively, patients with MRKH gave birth - in the first case from a uterus transplanted from a living donor, in the second from a deceased donor. The uterus is not a vital organ and is only transplanted for one pregnancy (it is removed after birth). Although the operation is very complicated and burdensome for both the donor and the recipient, it is possible.`,
+        pestka2: `A second option is surrogacy, which involves ectopic fertilisation with transfer of the embryo to a surrogate mother. In this way, a patient with MRKH syndrome can be a genetic parent, since from an ovarian point of view Bezpestkowe are fertile.`,
+        pestka3: `The third (and currently the only legally available in Poland) option is adoption, but in order to initiate the adoption procedure, one must be married for at least four years.`,
+        pestka3_2: `It is worth noting that there are individuals who fulfil the need for parenthood in other ways, e.g. by bonding with a person who has a child/children, by becoming involved as a carer, a close family friend, etc.`
+     },
+     "uk": {
+        header: `Відносини та материнство`,
+        p1: `Процес дозрівання людей із синдромом МРКГ (до встановлення діагнозу) протікає так само, як і у людей з насінням, тому люди безнасінні приймають жіночі гендерні ролі (через зовнішній вигляд, а не синдром МРКГ).`,
+        p2: `Роль терапевта/ - ів полягає в підтримці людей із синдромом МРКГ у встановленні ними сексуальних контактів або спільному розпізнаванні причини, чому вони до них не вдаються. Розмова про блокади і пошуки рішень допомагають досягти задоволення в сексуальній сфері.`,
+        p3: `Кожна людина, незалежно від того, є у неї насінина чи ні, побудована по-різному - наші тіла, їх зовнішній вигляд і функціональність відрізняються одне від одного. Якщо ви стурбовані тим, що ваш сексуальний партнер/-ка визнає, що ваша вагіна була створена, ми запевняємо вас, що немає причин хвилюватися - з непрофесійної точки зору, ми не можемо розпізнати, чи мали ми сексуальний контакт з особою, яка народилася з піхвою або з кимось, хто має “неовагіну”.`,
+        pestka1: `Першим варіантом є трансплантація матки, яка поки що вважається експериментальним методом і з анатомічних причин не може бути виконана всім пацієнтам із синдромом МРКГ. Зараз у світі налічується більше десяти дітей, народжених пацієнтами з синдромом МРКГ. Поки що найвідомішими є прецеденти 2014 та 2017 років, коли у Швеції та Бразилії пацієнтки з синдромом МРКГ народжували живих дітей – у першому випадку від матки, пересадженої від живого донора, у другому – від померлого. Матка не є необхідним для життєдіяльності органом і пересаджується тільки для потреб однієї вагітності (її видаляють після пологів). Хоча операція дуже складна і обтяжлива як для донора, так і для пацієнта, проте вона можлива.`,
+        pestka2: `Другий варіант - сурогатне материнство, яке полягає у позаматковому заплідненні з перенесенням ембріона сурогатній матері. Таким чином, пацієнт із синдромом МРКГ може бути генетичним батьком, оскільки з точки зору яєчників люди з синдромом МРКГ є плідні.`,
+        pestka3: `Третій варіант (і наразі єдиний доступний у Польщі з юридичної точки зору) – це усиновлення, але для того, щоб розпочати процедуру усиновлення, ви повинні бути у шлюбі не менше чотирьох років.`,
+        pestka3_2: `Варто підкреслити, що є люди, які задовольняють потребу батьківства в інший спосіб, наприклад, спілкуючись з особою, яка має дитину/дітей, стаючи опікуном, близьким другом сім’ї тощо.`
+     }
+}
+
+const {lang} = Astro.props;
+
+const trans = all[lang];
+
+---
+
+<Page color="white">
+    <Header slot="header">
+        <PageTitle slot="lhs" title={trans.header}/>
+    </Header>
+    <div class="info" slot="body">
+        <section class="top">
+            <p>{trans.p1}</p>
+            <p>{trans.p2}</p>
+            <p>{trans.p3}</p>
+        </section>
+        <section class="peeps">
+            <p>{trans.pestka1}</p>
+            <p>{trans.pestka2}</p>
+            <p>{trans.pestka3}</p>
+            <p>{trans.pestka3_2}</p>
+        </section>
+    </div>
+</Page>
