@@ -3,11 +3,12 @@ interface Props {
     lang: Lang
 }
 
+import type { Lang } from "../types";
 import Page from "./Page.astro";
 import Header from '../layouts/Header.astro';
 import PageTitle from "./PageTitle.astro";
-import type { Lang } from "../types";
-import Pestka from "./Pestka.astro";
+import Pestka from './Pestka.astro';
+import family from "@images/family.png";
 
 const plTrans = {
     header: "Relacje i macierzyństwo",
@@ -59,9 +60,19 @@ const trans = all[lang];
         align-items: center;
         justify-content: center;
     }
+    .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+    }
     .pestka span {
         font-size: 3rem;
         color: var(--orange-color);
+    }
+    .family {
+        width: 400px;
+        height: 564px;
     }
 </style>
 
@@ -69,11 +80,16 @@ const trans = all[lang];
     <Header slot="header">
         <PageTitle slot="lhs" title={trans.header}/>
     </Header>
-    <div class="info" slot="body">
+    <div slot="body">
         <section class="top">
-            <p>{trans.p1}</p>
-            <p>{trans.p2}</p>
-            <p>{trans.p3}</p>
+            <div>
+                <p>{trans.p1}</p>
+                <p>{trans.p2}</p>
+                <p>{trans.p3}</p>
+            </div>
+            <div>
+                <img class="family" src={family} alt="Rodzina">
+            </div>
         </section>
         <section class="peeps">
             <div class="pestka">
