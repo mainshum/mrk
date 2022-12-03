@@ -1,0 +1,86 @@
+---
+import type { Lang } from 'src/types';
+import Page from './Page.astro';
+import PageTitle from './PageTitle.astro';
+import Header from '../layouts/Header.astro';
+import Pestka from './Pestka.astro';
+import womb from '@images/womb.svg';
+import pestka from '@images/pestka.svg';
+import LangPicker from './LangPicker.astro';
+
+interface Props {
+    lang: Lang
+}
+
+const plTrans = {
+    header: `Jak rozmawiać o zespole MRKH?`,
+    text: `Bezpestkowe to projekt założony w 2018 roku, którego celem jest nie tylko aktywne wspieranie osób z zespołem Mayera-Rokitansky’ego-Küstera-Hausera, ale również uświadamianie i edukowanie społeczeństwa. Nazwa nawiązuje do pestki owocu i przyrównania jej do macicy — owoce pestkowe różnią się od bezpestkowych tylko posiadaniem pestki, która przecież niczego nie definiuje.`
+}
+
+type T = keyof typeof plTrans;
+
+const temp: Record<Lang, Record<T, string>> = {
+    "pl": plTrans,
+    "en": {
+        header: plTrans.header,
+        text: `Bezpestkowe (pl. “seedless”) is a project founded in 2018 that aims not only to actively support people with Mayer-Rokitansky-Küster-Hauser syndrome, but also to raise awareness and educate the public. The name refers to the seed of fruit and compares it to the uterus - stone fruit differs from seedless fruit only by having a seed, which after all does not define anything.`
+    },
+    "uk": {
+        header: plTrans.header,
+        text: `Безнасінні - це проект, заснований у 2018 році, метою якого є не лише активна підтримка людей із синдромом Маєра - Рокітанського - Кюстера - Гаузера, а й також підвищення обізнаності та виховання громадськості. Назва відноситься до кісточки чи насінини плоду рослин та уподібнює її до матки - плоди насінні відрізняються від безнасінних тільки тим, що мають насіння, яке, звісно ж, нічого не визначає.`
+    },
+}
+
+const {lang} = Astro.props;
+
+const trans = temp[lang];
+---
+
+<style>
+    .header-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+    img {
+        height: 75px;
+    }
+    .body {
+        font-size: 2.8rem;
+    }
+    /* .lang-slider {
+        transition: right 0.5s;
+        transition-timing-function: ease-out;
+        display: flex;
+        position: absolute;
+        right: calc(-2 * var(--header-h));
+        width: calc(3 * var(--header-h));
+        height: 100%;
+    }
+    .lang-slider.open {
+        right: 0;
+    }
+    .lang-wrapper {
+        display: flex;
+        justify-content: center;
+        width: calc(var(--header-h))
+    }
+    button {
+        background: none;
+        border: none;
+        cursor: pointer;
+    } */
+</style>
+<Page color="white">
+    <Header slot="header">
+        <div class="header-left" slot='lhs'>
+            <img class='img' src={womb} alt='Glowna' />
+            <PageTitle isBigger={true} title="bezpestkowe"/>
+        </div>
+        <LangPicker currentLang={lang} slot="rhs" />
+    </Header>
+    <div class="body" slot="body">
+        {trans.text}
+    </div>
+</Page>

@@ -1,6 +1,6 @@
 import type { Doctor } from "@prisma/client";
 
-export const allowed = ['uk', 'en', 'pl'];
+export const allowed = ['pl', 'en', 'uk'];
 
 export interface Specialization {
   specName: string;

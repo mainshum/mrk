@@ -3,6 +3,7 @@ const {color} = Astro.props;
 ---
 <style>
     header {
+        overflow: hidden;
         height: var(--header-h);
         border-bottom: 2px solid;
         border-top: 2px solid;
@@ -12,16 +13,22 @@ const {color} = Astro.props;
     header > div {
         display: flex;
         align-items: center;
+        position: relative;
+    }
+    header > div:first-child {
         padding: 16px 8px;
     }
     .left {
         flex-grow: 1;
     }
     .right {
+        position: relative;
         flex-basis: var(--header-h);
         flex-shrink: 0;
         border-left: 2px solid;
         border-color: inherit;
+        justify-content: center;
+        align-items: center;
     }
 </style>
 <header>
@@ -29,5 +36,6 @@ const {color} = Astro.props;
         <slot name="lhs"></slot>
     </div>
     <div class="right">
+        <slot name="rhs"></slot>
     </div>
 </header>

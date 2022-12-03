@@ -1,14 +1,16 @@
 ---
 interface Props {
     title: string
+    isBigger?: boolean
 }
-const {title} = Astro.props;
----
-<style>
-    h1 {
-        font-size: 4.1rem;
-    }
+const {title, isBigger = false} = Astro.props;
 
+const fontSize = isBigger ? '4.8rem': '4.1rem';
+---
+<style define:vars={{fontSize}}>
+    h1 {
+        font-size: var(--fontSize);
+    }
 </style>
 
 <h1>{title}</h1>
