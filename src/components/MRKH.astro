@@ -1,0 +1,50 @@
+---
+import type { Lang } from 'src/types';
+import Page from './Page.astro';
+import Pestka from './Pestka.astro';
+import Header from '../layouts/Header.astro';
+import PageTitle from './PageTitle.astro';
+
+interface Props {
+    lang: Lang
+}
+
+const plTrans = {
+    header: `Czym jest zespół MRKH i z czym się wiąże?`
+}
+
+type T = keyof typeof plTrans;
+
+const temp: Record<Lang, Record<T, string>> = {
+    "pl": plTrans,
+    "en": plTrans,
+    "ua": plTrans,
+}
+
+const {lang} = Astro.props;
+
+const trans = temp[lang];
+---
+
+<style>
+    img {
+        height: 75px;
+    }
+    p {
+        padding: 8px 0px;
+    }
+    .footer { 
+        font-size: 1.4rem;
+    }
+</style>
+<Page color="violet">
+    <Header slot="header">
+        <PageTitle slot='lhs' title={trans.header}/>
+        <Pestka Parent='button' isOrange={true} slot='rhs' alt="Pobierz pdf" width={75}>
+            <span>pdf</span>
+        </Pestka>
+    </Header>
+    <div class="body" slot="body">
+        Content
+    </div>
+</Page>

@@ -50,6 +50,9 @@ const langs = [langsTwice[ind], langsTwice[ind + 1], langsTwice[ind + 2]];
     .lang-slider.open {
         right: 0;
     }
+    .currentLang {
+        color: var(--orange-color);
+    }
     .lang-wrapper {
         display: flex;
         justify-content: center;
@@ -57,12 +60,12 @@ const langs = [langsTwice[ind], langsTwice[ind + 1], langsTwice[ind + 2]];
     }
 </style>
 
-<div data-slider class="lang-slider">
+<div data-slider data-current-lang={currentLang} class="lang-slider">
     {langs.map(l => (
         <div class="lang-wrapper">
             <button data-lang={l}>
                 <a href={`/${l}`}>
-                    <span class="lang-name">{l}</span>
+                    <span class:list={{currentLang: l === currentLang, 'lang-name': true}}>{l}</span>
                     <img src={pestka} alt="wybor-jezyka"/>
                 </a>
             </button>
@@ -78,12 +81,19 @@ const langs = [langsTwice[ind], langsTwice[ind + 1], langsTwice[ind + 2]];
         if (!slider)
             return;
 
+        const {lang: langClicked}= (event.currentTarget as HTMLElement).dataset;
+        const {currentLang} = (slider as HTMLElement).dataset;
         const isOpen = slider.classList.contains('open');
 
         if (!isOpen)  {
             event.preventDefault();
             return slider!.classList.add('open');
         } 
+
+        if (langClicked === currentLang) {
+            event.preventDefault();
+            return slider!.classList.remove('open');
+        }
     }
 
     for (const lb of langButtons) 

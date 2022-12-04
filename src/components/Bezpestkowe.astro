@@ -10,6 +10,7 @@ import Kontakty from "./Kontakty.astro";
 import Relacje from "./Relacje.astro";
 import Start from "./Start.astro";
 import Strona2 from "./Strona2.astro";
+import MRKH from "./MRKH.astro";
 
 const {lang} = Astro.props;
 ---
@@ -17,6 +18,7 @@ const {lang} = Astro.props;
 <Main>
 	<Start lang={lang} />
 	<Strona2 lang={lang} />
+	<MRKH lang={lang} />
 	<Relacje lang={lang} />
 	{lang !== 'pl' ? null : (
 		<Gabinety lang={lang} />

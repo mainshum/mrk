@@ -2,12 +2,20 @@
 interface Props {
     width: number
     alt: string
+    Parent: 'div' | 'button'
+    isOrange?: boolean
 }
 import pestka from '@images/pestka.svg';
+import pestkaOrange from '@images/pestka_orange.svg';
 
-const {width, alt} = Astro.props;
+const {width, alt, isOrange = false, Parent} = Astro.props;
 ---
 <style>
+    button {
+        cursor: pointer;
+        border: none;
+        background: none;
+    }
     .pestka {
         position: relative;
         display: flex;
@@ -22,12 +30,13 @@ const {width, alt} = Astro.props;
     .slot {
         z-index: 1;
         color: var(--secondary-color);
+        font-size: 2rem;
     }
 </style>
 
-<div class="pestka" style={{width: `${width}px`, height: `${width}px`}}>
-    <img width="100%" height="100%" src={pestka} alt={alt}>
-    <div class="slot">
+<Parent class="pestka" style={{width: `${width}px`, height: `${width}px`}}>
+    <img width="100%" height="100%" src={isOrange ? pestkaOrange : pestka} alt={alt}>
+    <span class="slot">
         <slot />
-    </div>
-</div>
+    </span>
+</Parent>
