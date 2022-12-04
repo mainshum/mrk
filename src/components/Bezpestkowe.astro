@@ -9,12 +9,14 @@ import type { Lang } from "../types";
 import Kontakty from "./Kontakty.astro";
 import Relacje from "./Relacje.astro";
 import Start from "./Start.astro";
+import Strona2 from "./Strona2.astro";
 
 const {lang} = Astro.props;
 ---
 
 <Main>
 	<Start lang={lang} />
+	<Strona2 lang={lang} />
 	<Relacje lang={lang} />
 	{lang !== 'pl' ? null : (
 		<Gabinety lang={lang} />

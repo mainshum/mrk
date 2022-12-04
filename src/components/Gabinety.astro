@@ -1,7 +1,7 @@
 ---
 
 interface Props {
-    lang: 'pl' | 'en' | 'uk'
+    lang: Lang
 }
 
 import { PrismaClient } from "@prisma/client";
@@ -11,6 +11,7 @@ import PageTitle from './PageTitle.astro';
 import Header from '../layouts/Header.astro';
 import office from '@images/office.png';
 import beads from '@images/beads.png';
+import type { Lang } from "src/types";
 
 const prisma = new PrismaClient();
 const cities = await prisma.city.findMany({});

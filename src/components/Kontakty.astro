@@ -33,7 +33,7 @@ const people: Record<Lang, [string, string][]> = {
         ['Aleksander Przeszło', 'web development'],
         ['Maria Zdulska', 'rachunkowość i księgowość'],
     ],
-    'uk': [
+    'ua': [
         ['Mikołaj Hałabuda', 'projekt broszur'],
         ['Zofka Kofta', 'projekt strony internetow'],
         ['Kozlow', 'ilustracje'],
@@ -62,7 +62,7 @@ type T = keyof typeof plTrans;
 const rest: Record<Lang, Record<T, string>> = {
     "pl": plTrans,
     "en": plTrans,
-    "uk": plTrans,
+    "ua": plTrans,
 };
 
 const pp = people[lang];

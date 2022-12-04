@@ -1,0 +1,145 @@
+---
+import type { Lang } from 'src/types';
+import Page from './Page.astro';
+
+interface Props {
+    lang: Lang
+}
+
+const plTrans = {
+    p1: `W naszym społeczeństwie wciąż pokutują krzywdzące stereotypy —
+    przynależność do płci często definiowana jest poprzez kondycję naszych ciał.
+    Te z nas, które czują się kobietami, dobrze wiedzą, że brak macicy niczego
+    nam nie ujmuje, nie sprawia, że jesteśmy ‘niepełne’. Nasza kondycja jest
+    więc konsekwentnie dowodem na to, że tożsamość płciowa nie ma prawa być
+    definiowana na podstawie tego, co nasze ciało ma, a czego nie.`,
+    p2: `Zespół MRKH nie ujmuje bezpestkowym kobiecości — najwyższy czas, by
+    wybrzmiało to głośno i wyraźnie, zwłaszcza że jako bezpestkowe często
+    jesteśmy wykluczane z tzw. ‘kobiecych kręgów’, w których więź często
+    budowana jest w oparciu o wspólne doświadczenia związane z miesiączkowaniem
+    i macierzyństwem. Wiedząc, jakie uczucia wiążą się z wykluczaniem ze
+    wspólnot, robimy wszystko, co w naszej mocy, aby uniknąć podobnej atmosfery
+    w naszej społeczności.`,
+    p3: `Tak jak w ogólnej populacji, tak i wśród nas są osoby niebinarne oraz
+    transpłciowe, a także nieheteronormatywne. Dla tej może nielicznej, ale nie
+    mniej znaczącej grupy bezpestkowych docierające zewsząd komunikaty z góry
+    zakładające, że wszystkie jesteśmy heteroseksualnymi kobietami, prowadzą do
+    jeszcze mocniejszego poczucia wykluczenia. Z szacunku do naszej
+    różnorodności i chęci tworzenia społeczności, gdzie każda/-y może być sobą
+    niezależnie od tożsamości płciowej i orientacji psychoseksualnej* , w tej
+    broszurze używamy naprzemiennie słów ‘pacjentka’ i ‘osoba’, a ich
+    ewentualnych partnerów/-ki nazywamy ‘osobami partnerskimi’`,
+    p4: `Pośród nas są także osoby interpłciowe. Czym jest interpłciowość?
+    Interpłciowość to pojęcie parasol dotyczące osób, które rodzą się z ciałem
+    nie wpisującym się w społeczne i/lub medyczne definicje typowych ciał
+    żeńskich bądź męskich. Wszystkie osoby z zespołem MRKH mogą, ale nie muszą
+    postrzegać się jako osoby interpłciowe.`,
+    footer: `*Tożsamość płciowa i orientacja psychoseksualna to pojęcia
+    powszechnie mylone ze sobą, oznaczające w rzeczywistości dwie zupełnie
+    oddzielne rzeczy. Tożsamość płciowa to osobiste poczucie przynależności do
+    płci, świadomość naszego wewnętrznego płciowego ‘ja’. Z kolei orientacja
+    psychoseksualna określa nasz emocjonalny, romantyczny lub seksualny pociąg
+    do osób określonej płci.`
+}
+
+type T = keyof typeof plTrans;
+
+const temp: Record<Lang, Record<T, string>> = {
+    "pl": plTrans,
+    "en": {
+        p1: `Harmful stereotypes still persist in our society - gender is often
+        defined by the condition of our bodies. Those of us who feel feminine
+        are well aware that the absence of a uterus does not take anything away
+        from us, does not make us 'incomplete'. Our condition therefore proves
+        that gender identity has no right to be defined by what our bodies have
+        and don't have.`,
+        p2: `MRKH syndrome does not subjugate Bezpestkowe’s femininity - it is
+        about time for this to ring loud and clear, especially since as
+        Bezpestkowe we are often excluded from the so-called 'women's circles',
+        where bonds are often established on the foundation of shared
+        experiences of menstruation and motherhood. Knowing what it feels like
+        to be excluded from communities, we do our best to avoid creating a
+        similar atmosphere within our own.  `,
+        p3: `Just as among the general population, there are non-binary,
+        transgender and non-heteronormative people among us. For this perhaps
+        small but no less significant group of Bezpestkowe, the preconception
+        that we are all heterosexual women leads to an even stronger sense of
+        exclusion. Out of respect for our diversity and the desire to create a
+        community where everyone can be themselves regardless of gender identity
+        and psychosexual orientation*, we use the words 'patient' and 'person'
+        interchangeably and refrain from specifying the gender of Bezpestkowe’s
+        potential partners.`,
+        p4: `There are also intersex people among us. What is intersex?
+        Inter-sex is an umbrella term for people who are born with a body that
+        does not fit into social and/or medical definitions of typical female or
+        male bodies. People with MRKH can (but don’t have to) identify under the
+        intersex umbrella.`,
+        footer: `*Gender identity and psychosexual orientation are terms
+        commonly confused with each other, but they mean two completely separate
+        things. Gender identity is a personal sense of belonging to a gender, an
+        awareness of our inner self. Psychosexual orientation, on the other
+        hand, describes our emotional, romantic or sexual attraction to people
+        of a certain sex.  `
+    },
+    "ua": {
+        p1: `У нашому суспільстві досі живуть стереотипи - стать часто
+        визначається через призму нашого тіла. Ті з нас, хто відчувають себе
+        жінками, добре знають, що відсутність матки нічого у нас не забирає, не
+        робить нас «неповноцінними». Наш стан є послідовним доказом того, що
+        гендерна ідентичність не має права визначатися тим, що має і чого не має
+        наше тіло.`,
+        p2: `Синдром МРКГ не забирає безнасінним можливості бути жінкою - зараз
+        найкращий час, щоб це зазвучало голосно і чітко, тим паче, що нас, як
+        безнасінних, часто виключають із т.зв. «Жіночих кіл», в яких відносини
+        часто будуються на основі спільного досвіду, пов’язаного з менструацією
+        та материнством. Знаючи відчуття, що пов’язані з виключенням, ми робимо
+        все, що в наших силах, щоб уникнути подібної атмосфери в нашій
+        спільноті.`,
+        p3: `Як серед населення загалом, так і серед нас є небінарні,
+        трансгендерні та негетеронормативні люди. Для цієї, мабуть, нечисленної,
+        але не менш важливої групи безнасінних, судячи з інформації, що
+        надходить з усього світу, можна зробити припущення, що всі ми є
+        гетеросексуальними жінками, а це призводить до ще більшого відчуття
+        ізоляції. З поваги до нашої різноманітності a їхніх партнерів /
+        партнерок називаємо «oсобами партнерськими»`,
+        p4: `Є серед нас також особи інтерсексуальні. Що таке
+        інтерсексуальність? Інтерсексуальність - це загальний термін, що
+        стосується осіб, які народилися з тілом, яке не вписується в соціальні
+        та/або медичні визначення типового жіночого чи чоловічого тіла. Усі люди
+        з синдромом МРКГ можуть, але не мусять вважати себе особою
+        інтерсексуальною.`,
+        footer: `* Гендерна ідентичність і психосексуальна орієнтація - це
+        терміни, які зазвичай плутають між собою, проте фактично вони означають
+        дві абсолютно різні речі. Гендерна ідентичність – це особисте відчуття
+        приналежності до статі, усвідомлення нашого внутрішнього сексуального
+        «я». Психосексуальна орієнтація, навпаки, визначає наш емоційний,
+        романтичний чи сексуальний потяг до осіб певної статі.` 
+    },
+}
+
+const {lang} = Astro.props;
+
+const trans = temp[lang];
+---
+
+<style>
+    img {
+        height: 75px;
+    }
+    p {
+        padding: 8px 0px;
+    }
+    .footer { 
+        font-size: 1.4rem;
+    }
+</style>
+<Page color="violet">
+    <div class="body" slot="body">
+        <>
+        {Object.values(trans).slice(0, 3).map(d => (
+            <p>{d}</p>
+        ))}
+        <p class="footer">{trans.footer}</p>
+        </>
+    </div>
+</Page>
