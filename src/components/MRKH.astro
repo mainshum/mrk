@@ -10,15 +10,223 @@ interface Props {
 }
 
 const plTrans = {
-    header: `Czym jest zespół MRKH i z czym się wiąże?`
+    header: `Czym jest zespół MRKH i z czym się wiąże?`,
+    p1: `Zespół MRKH to uwarunkowana genetycznie aplazja (niewykształcenie się
+    narządu) lub hipoplazja (znacznego stopnia niedorozwój) macicy i pochwy u
+    osoby z fenotypem (przyp. red. fenotyp to najogólniej wygląd) kobiecym z
+    kariotypem 46,XX. Należy do grupy chorób rzadkich, ponieważ według statystyk
+    dotyczy ok. 1 na 4000 do 1 na 10 000 żywo urodzonych noworodków płci
+    żeńskiej (najczęściej mówi się, że jest to ok. 1 na 4500 żywo urodzonych
+    noworodków płci żeńskiej). W Polsce jest ok. 4400 osób z zespołem MRKH, a co
+    roku rodzi się ok. 40 bezpestkowych.`,
+    p2: `
+    Zespół MRKH u każdej osoby wygląda inaczej. Od całkowitego braku macicy,
+    przez szczątkowe nieczynne rogi macicy, do szczątkowych rogów macicy ze
+    szczątkową jamą z endometrium. Tak samo w przypadku pochwy — może być ona
+    całkowicie nieobecna, występować w szczątkowej formie lub w formie zachyłka,
+    który u niektórych bezpestkowych jest na tyle duży, że przy podejmowaniu
+    prób współżycia staje się w pełni funkcjonalną pochwą bez interwencji
+    medycznej.
+    `,
+    p3: `
+    Zespół MRKH jest wadą złożoną — w medycynie każda choroba, która nazywana
+    jest zespołem, składa się z wielu elementów. Wadom macicy i pochwy mogą
+    towarzyszyć więc wady innych narządów. Dwa najczęściej dotknięte wadami
+    układy to układ moczowy oraz kostny; w niektórych przypadkach pojawiają się
+    także wady serca i dużych naczyń, a część pacjentek ma niedosłuch.
+    `,
+    p4:`
+    W związku z powyższym wyróżniamy dwa typu zespołu MRKH: pierwszy rozpoznaje
+    się wówczas, gdy wada ogranicza się do układu rozrodczego, czyli macicy i
+    pochwy, a drugi gdy współistnieją inne wady, np. wrodzony brak nerki i/lub
+    wady kręgosłupa.
+    `,
+    p5: `
+    Choć bezpestkowe nie miesiączkują, nie jest to równoznaczne z brakiem cyklu
+    miesiączkowego. Osoby z zespołem MRKH mają funkcjonujące jajniki, które
+    wydzielają hormony i produkują komórki jajowe, w związku z czym bezpestkowe
+    owulują i, z hormonalnego punktu widzenia, przechodzą przez wszystkie etapy
+    cyklu (jak pestkowe). Jedyną różnicą jest brak krwawienia, choć w przypadku
+    występowania szczątkowego endometrium może dochodzić do
+    “mikromiesiączkowania”. Bezpestkowe także przejdą menopauzę i mogą
+    doświadczać wielu związanych z nią niedogodności.
+    `,
+    p6: `
+    Bycie bezpestkową nie jest równoznaczne z niemożnością uprawiania seksu.
+    Każda osoba definiuje seks na swój sposób, a penetracja nie jest konieczna.
+    Jeśli jednak zdecydujesz się na seks penetracyjny, istnieją trzy sposoby na
+    wytworzenie pochwy. Pamiętaj, żeby przed rozpoczęciem działań w tym kierunku
+    skontaktować się z lekarką/lekarzem prowadzącą/-ym. Którąkolwiek z opcji
+    wybierzesz, udany i satysfakcjonujący seks pomimo zespołu MRKH jest możliwy.
+    Jego jakość nie zależy od tego, czy Twoja pochwa ma 4 czy 7 centymetrów, ale
+    od tego, z kim decydujesz się współżyć.
+    `,
+    p7: `
+    Pierwszą możliwością jest rozciągnięcie pochwy z osobą partnerską — jeśli
+    masz kogoś, z kim będziesz czuła się na tyle komfortowo, aby to zrobić (w
+    atmosferze czułości i wzajemnego zaufania), rozważcie tę opcję. Może sprawić
+    Wam wiele przyjemności.
+    `,
+    p8: `
+    Drugą jest nieoperacyjne wymodelowanie pochwy za pomocą dilatorów. Polega
+    ona na regularnym stopniowym rozpychaniu istniejącego zachyłka pochwy. Ta
+    opcja wymaga cierpliwości i determinacji, jednak daje wiele satysfakcji.
+    Ćwiczenia możesz dostosowywać do swoich potrzeb. Pamiętaj, że robisz to dla
+    siebie, więc cały proces powinien sprawiać Ci przyjemność.
+    `,
+    p9: `
+    Trzecia opcja to zabieg operacyjny.
+    `
 }
 
 type T = keyof typeof plTrans;
 
 const temp: Record<Lang, Record<T, string>> = {
     "pl": plTrans,
-    "en": plTrans,
-    "ua": plTrans,
+    "en": {
+        header: `
+        What is MRKH syndrome and what does it involve?
+        `,
+        p1: `
+        MRKH syndrome is a genetically determined aplasia (organ failure) or
+        hypoplasia (significant underdevelopment) of the uterus and vagina in a
+        person with a female phenotype (ed. note: phenotype most simply
+        explained means the appearance of a person) with karyotype 46.XX. It
+        belongs to the group of rare diseases because, according to statistics,
+        it affects about 1 in 4000 to 1 in 10 000 live born female newborns
+        (most often it is said that it is about 1 in 4500 live born female
+        newborns). In Poland there are approx. 4400 people with MRKH, and about
+        40 Bezpestkowe are born each year.
+        `,
+        p2: `
+        MRKH syndrome looks different in each person. It ranges from a complete
+        absence of the uterus, to residual non-functioning uterine horns or
+        residual uterine horns with a residual cavity with endometrium.
+        Similarly, in the case of the vagina, it may be completely absent,
+        present in a vestigial form or in the form of a recess, which in some
+        individuals is large enough to become a fully functional vagina without
+        medical intervention when intercourse is attempted.
+        `,
+        p3: `
+        MRKH syndrome is complex - in medicine, anything called a syndrome is
+        made up of many components. Defects of the uterus and vagina can
+        therefore be accompanied by defects in other organs. The two systems
+        most commonly affected are the urinary system and the skeletal system;
+        in some cases there are also defects of the heart and great vessels, and
+        some patients have hearing loss.
+        `,
+        p4: `
+        There are therefore two types of MRKH syndrome: the first is diagnosed
+        when the defect is limited to the reproductive system, i.e. the uterus
+        and vagina, and the second when other defects coexist, such as
+        congenital absence of a kidney and/or spinal defects.
+        `,
+        p5: `
+        Although Bezpestkowe do not menstruate, this does not equate to the
+        absence of a menstrual cycle. People with MRKH syndrome have functioning
+        ovaries that secrete hormones and produce ova, so Bezpestkowe ovulate
+        and, hormonally speaking, go through all the stages of the cycle. The
+        only difference is that there is no bleeding, although in the presence
+        of a vestigial endometrium "micro-menstruation" may occur. Bezpestkowe
+        will also go through menopause and may experience the many discomforts
+        associated with it.
+        `,
+        p6: `
+        Having MRKH does not equal being unable to have sex. Each person defines
+        sex in their own way, and penetration is not necessary. However, if you
+        choose to have penetrative sex, there are three ways to create a vagina.
+        Remember to check with your health care provider before doing this.
+        Whichever option you choose, successful and satisfying sex despite MRKH
+        is possible. The quality of sex does not depend on whether your vagina
+        is 4 or 7 centimetres long, but on who you choose to have sex with.
+        `,
+        p7: `
+        The first option is vaginal stretching with a partner - if you have
+        someone you feel comfortable enough to do this with (in an atmosphere of
+        tenderness and mutual trust), consider this option. It can give you a
+        lot of pleasure.
+        `,
+        p8: `
+        The second is non-surgical vaginal shaping using dilators (known as
+        dilation). It involves regular, gradual stretching of the existing
+        vaginal canal. This option requires patience and determination, but is
+        very rewarding. You can adapt the exercises to suit your needs. Remember
+        that you are doing this for yourself, so you should enjoy the process.
+        `,
+        p9: `
+        The third option is surgery
+        `
+    },
+    "ua": {
+        header: `
+        Що таке синдром МРКГ і з чим це пов’язано?
+        `,
+        p1: `
+        Синдром МРКГ - це генетично обумовлена ​​аплазія (несформованість
+        органу) або гіпоплазія (виражене недорозвинення) матки та піхви у людини
+        з фенотипом (фенотип - це загалом означає зовнішність) жінки з
+        каріотипом 46, XX. Синдром належить до групи рідкісних захворювань,
+        оскільки, згідно зі статистичними даними, вражає приблизно 1 з 4000 до 1
+        з 10 000 живонароджених немовлят жіночої статі (найчастіше кажуть, що це
+        приблизно 1 з 4500 живонароджених немовлят жіночої статі). У Польщі
+        близько 4400 людей із синдромом МРКГ, і щороку народжується близько 40
+        осіб безнасінних.
+        `,
+        p2: `
+        У кожної людини синдром МРКГ виглядає по-іншому. Від повної відсутності
+        матки, через залишкові неактивні роги матки, до залишкових рогів матки
+        із залишковою порожнинною ендометрією. Подібним чином, у випадку піхви,
+        вона може бути повністю відсутня, залишкова або у формі поглиблення, яке
+        в деяких безнасінних настільки велике, що під час спроби статевого акту
+        воно стає повністю функціональною піхвою без медичного втручання.
+        `,
+        p3: `
+        Синдром МРКГ є комплексною вадою - в медицині кожне захворювання, яке
+        називають синдромом, складається з багатьох компонентів. Таким чином,
+        вади матки і піхви можуть супроводжуватися дефектами інших органів. Дві
+        найбільш часто уражені системи - це сечовидільна та кісткова системи; в
+        деяких випадках також спостерігаються пороки серця і великих судин, а в
+        частини пацієнтів спостерігається часткова втрата слуху.
+        `,
+        p4: `
+        Підсумовуючи, існує два типи синдрому МРКГ: перший діагностується, коли
+        вада обмежена репродуктивною системою, тобто маткою та піхвою, а другий
+        - коли інші дефекти співіснують, наприклад, вроджена відсутність нирки
+        та / або дефекти хребта.
+        `,
+        p5: `
+        Хоча у безнасінних немає менструації, це ще не говорить нам про
+        відсутність менструального циклу. Люди з синдромом МРКГ мають
+        функціональні яєчники, які виділяють гормони та виробляють яйцеклітини,
+        тому безнасінні яєчники овулюють і, з гормональної точки зору, проходять
+        усі стадії циклу (як у осіб насінних). Єдина відмінність полягає в тому,
+        що кровотеча відсутня, хоча може бути «мікроменструація», при
+        залишковому ендометрію. Безнасінні також переживають менопаузу і можуть
+        зазнати багатьох незручностей, пов’язаних із нею.
+        `,
+        p6: `
+        Безнасінність - не значить відсутність сексуального життя . Кожна людина
+        визначає секс по-своєму, а проникнення - це не обов‘язково. Утім, якщо
+        ви вирішите займатися сексом з проникненням, є три способи на
+        “створення” піхви. Не забувайте проконсультуватися з лікарем перед
+        початком будь-яких дій у цьому напрямку. Який би варіант ви не вибрали,
+        успішний і задовільний секс, незважаючи на синдром МРКГ, можливий.
+        Якість процесу залежить не від того, чи Ваша вагіна має 4 чи 7
+        сантиметрів, а від того, з ким ви вирішили вступити в статевий акт.
+        `,
+        p7: `
+        Перший варіант - розтягнути піхву разом зі своїм партнером - якщо у вас
+        є хтось, з ким вам буде досить комфортно це зробити (в атмосфері
+        прихильності та взаємної довіри), розгляньте цей варіант. Цей спосіб
+        може доставити Вам масу задоволення.
+        `,
+        p8: `
+        Другий - неопераційне моделювання піхви за допомогою розширювачів. Він полягає в регулярному поступовому розтягуванні наявного вагінального поглиблення. Цей варіант вимагає терпіння і рішучості, проте також приносить масу задоволення. Ви можете достосувати вправи до своїх потреб. Пам’ятайте, що Ви робите це для себе, тому цей процес повинен приносити Вам задоволення.
+        `,
+        p9: `
+        Третій варіант - операційне втручання.
+        `
+    },
 }
 
 const {lang} = Astro.props;
@@ -33,11 +241,14 @@ const trans = temp[lang];
     p {
         padding: 8px 0px;
     }
-    .footer { 
-        font-size: 1.4rem;
+    .pestki > div {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
     }
 </style>
-<Page color="violet">
+<Page color="white">
     <Header slot="header">
         <PageTitle slot='lhs' title={trans.header}/>
         <Pestka Parent='button' isOrange={true} slot='rhs' alt="Pobierz pdf" width={75}>
@@ -45,6 +256,25 @@ const trans = temp[lang];
         </Pestka>
     </Header>
     <div class="body" slot="body">
-        Content
+        <section class="top">
+            <p>{trans.p1}</p>
+            <p>{trans.p2}</p>
+        </section>
+        <section class="middle">
+            <p>{trans.p3}</p>
+            <p>{trans.p4}</p>
+            <p>{trans.p5}</p>
+            <p>{trans.p6}</p>
+        </section>
+        <section class="pestki">
+            {(["p7", "p8", "p9"] as const).map((d, ind) => (
+                <div>
+                    <Pestka width={60} alt={d} Parent="div">
+                        <span>{ind}</span>
+                    </Pestka>
+                    <span>{trans[d]}</span>
+                </div>
+            ))}
+        </section>
     </div>
 </Page>
