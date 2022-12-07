@@ -1,0 +1,216 @@
+---
+import type { Lang } from 'src/types';
+import Page from './Page.astro';
+import Pestka from './Pestka.astro';
+import Header from '../layouts/Header.astro';
+import PageTitle from './PageTitle.astro';
+import { objectEnumValues } from '@prisma/client/runtime';
+
+interface Props {
+    lang: Lang
+}
+
+const plTrans = {
+    header: `Jak rozmawiać o zespole MRKH?
+    `,
+    p1: `
+    Ważna jest weryfikacja osób, z którymi dzielimy się naszymi doświadczeniami
+    bycia bezpestkową, ponieważ są osoby, które mogą tego nie zrozumieć i/lub
+    zareagować w negatywny sposób. Pamiętaj, że najważniejszy jest Twój komfort
+    i bezpieczeństwo, i że to Ty wyznaczasz granice.
+    `,
+    p2: `
+    Jeśli potrzebujesz porozmawiać z kimś o zespole MRKH, a nie wiesz jak
+    zacząć, polecamy powtarzanie w głowie wybranych kwestii, które chciałabyś
+    omówić, żeby w realnej sytuacji szło Ci płynnie, a wypowiadane słowa nie
+    brzmiały obco. Ty decydujesz, kto to będzie: bliska Ci osoba, druga
+    bezpestkowa, specjalista ds. zdrowia psychicznego (seksulog/-ka, psycholog/-
+    ka, psychoterapeuta/-ka). Możesz sięgnąć po różne formy wsparcia
+    odpowiadające Twoim potrzebom — poszukaj osób wspierających w najbliższym
+    otoczeniu, zastanów się nad dołączeniem do dedykowanej grupy wsparcia i/lub
+    skorzystaj ze wsparcia psychologicznego lub psychoterapii.
+    `,
+    p3: `
+    Język ma znaczenie! Ponieważ jako społeczeństwo nie jesteśmy otwarci na
+    różnorodność ani na różnorodny rozwój płciowy, a MRKH jest jednym z wielu
+    przypadków tej różnorodności, istotna jest adekwatna narracja. Jeśli o
+    zespole MRKH mówimy otwarcie, bez nacechowania i stygmatyzacji, pokazujemy,
+    że posiadanie zespołu MRKH nie jest niczym złym i/lub przerażającym. Nie
+    świadczy o ‘wybrakowaniu’ i nie stanowi o czyjejkolwiek wartości. Staramy
+    się unikać określeń: “cierpi”, “choruje” lub “zdiagnozowano zespół MRKH”.
+    Zamiast tego mówimy, że zespół MRKH się po prostu ma.
+    `,
+    p4: `
+    Najważniejszą kwestią sojusznictwa (tj. bycia osobą wspierającą) jest
+    empatia, słuchanie drugiej osoby i wyczucie (lub zapytanie wprost), czy ona
+    w ogóle chce rozmawiać na ten temat — nie każda osoba z zespołem MRKH chce o
+    nim mówić i nie każda musi być edukatorką i aktywistką. Dlatego też bazę
+    stanowi zadanie pytania (któremu powinien towarzyszyć komunikat o możliwości
+    wycofania się z rozmowy na warunkach bezpestkowej): “Czy chciałabyś o tym
+    porozmawiać i czy czujesz się z tym komfortowo?”. Ważne jest dawanie
+    przestrzeni, nie narzucanie się z nadmierną ilością pytań oraz respektowanie
+    wyznaczonych granic. Osoby z zespołem MRKH mają prawo być zmęczone
+    wypytywaniem, nie chcieć odpowiadać na pytania i zachować bycie bezpestkową
+    tylko dla siebie.
+    `,
+    p5: `
+    Niezwykle ważnym aspektem jest sposób przekazywania informacji na temat
+    zespołu MRKH przez lekarza/-kę prowadzącego/-cą. Nie można powiedzieć
+    pacjentce w pośpiechu, że nie będzie miesiączkowała, nie może współżyć, nie
+    może mieć dzieci, dlatego że to… nieprawda. Niestety nie tylko jako
+    bezpestkowe, ale w ogóle jako ludzie najczęściej zapamiętujemy właśnie to,
+    co powiedziano nam za pierwszym razem. Dlatego już w momencie rozpoznawania
+    zespołu MRKH należy przedstawiać alternatywne rozwiązania i nie traktować
+    bycia bezpestkową jako coś złego. Ważna jest rozmowa, a nie mechaniczne
+    podejmowanie działań, by pacjentka miała kontrolę nad sytuacją i była
+    świadoma podejmowanych decyzji, które dotyczą jej ciała.
+    `
+}
+
+type T = keyof typeof plTrans;
+
+const temp: Record<Lang, Record<T, string>> = {
+    "pl": plTrans,
+    "en": {
+        header: `
+        How to talk about MRKH?
+        `,
+        p1: `
+        An extremely important aspect is the way information about MRKH is
+        communicated by the attending doctor. You can't tell a patient in a
+        hurry that she won't menstruate, can't have intercourse, can't have
+        children because it's... not true. Unfortunately, not only as
+        Bezpestkowe, but as people in general, we most often remember exactly
+        what we were told at our first gynecologist appointment. That's why it's
+        important to be presented with alternatives as early as the
+        identification of MRKH syndrome and not to treat being Bezpestkowe as a
+        bad thing. It is important to talk rather than mechanically take action
+        so that the patient is in control of the situation and aware of the
+        decisions they is making that affect their body.
+        `,
+        p2: `
+        Language matters! Because as a society we are not open to diversity or
+        diverse sexual development, and MRKH is one of many cases of this
+        diversity, an adequate narrative is important. If we talk about MRKH
+        openly, without stigma or stigmatisation, we show that having MRKH is
+        nothing bad and/or scary. It is not a sign of 'incompleteness' and it
+        does not dictate someone’s worth. We try to avoid terms such as
+        "'suffering', “ill” or “diagnosed with MRKH syndrome”. Instead, we say
+        that one simply has MRKH.
+        `,
+        p3: `
+        The most important issue of allyship (i.e. being a supportive person) is
+        empathy, listening to the other person and sensing (or asking directly)
+        if they even want to talk about the topic - not every person with MRKH
+        wants to talk about it and not everyone needs to be an educator and
+        activist. Therefore, asking (accompanied by the possibility of
+        withdrawing from the conversation) is important: "Would you like to talk
+        about it and are you comfortable with having this conversation?". It is
+        important to give space, not to impose yourself with too many questions
+        and to respect the boundaries set by Bezpestkowe. People with MRKH
+        syndrome have the right to be tired of being asked, to not want to
+        answer questions and to keep their experiences just to themselves.
+        `,
+        p4: `
+        It is important to vet the people with whom we share our experiences, as
+        there are some people who may not understand this and/or react in a
+        negative way. Remember that your comfort and safety is most important,
+        and that you are the one who sets the boundaries.
+        `,
+        p5: `
+        If you need to talk to someone about MRKH and you don't know how to get
+        started, we recommend repeating in your head selected points you'd like
+        to discuss so that in a real-life situation you're fluent and the words
+        you say don't sound unfamiliar or feel awkward. It’s up to you to decide
+        who you will be sharing your story with: a loved one, a fellow person
+        with MRKH, a mental health professional (sexologist, psychologist,
+        psychotherapist). You can reach out for different forms of support to
+        suit your needs - look for supportive people in your immediate
+        environment, consider joining a dedicated support group and/or receiving
+        psychological support or psychotherapy.
+        `
+    },
+    "ua": {
+        header: `
+        Як розмовляти про синдром МРКГ?
+        `,
+        p1: `
+        Надзвичайно важливим аспектом є спосіб розповсюдження інформації про
+        синдром МРКГ лікуючим лікарем. Не можна поспіхом сказати пацієнтці, що у
+        неї не буде місячних, вона не може займатися сексом, не може мати дітей,
+        тому що це ... неправда. На жаль, не тільки як безнасінні, але в
+        загальному як люди ми найчастіше пам’ятаємо саме те, що нам сказали
+        вперше. Тому під час діагностики синдрому МРКГ слід запропонувати
+        альтернативні рішення, а не розглядати безпліддя як щось погане.
+        Важливою є розмова, а не механічна коротка відповідь, щоб пацієнтка
+        контролювала ситуацію і свідомо приймала рішення щодо свого тіла.
+        `,
+        p2: `
+        Мова має значення! Оскільки ми, як суспільство, не завжди відкриті до
+        різноманітності чи різноманітності статевого розвитку, а MРКГ є одним із
+        багатьох прикладів цього різноманіття, тому важливе значення має
+        адекватний наратив. Якщо ми говоримо про синдром МРКГ відкрито, без
+        жодного осуду та стигматизації, ми показуємо, що мати синдром МРКГ - це
+        нічого поганого та/або страшного. Це не означає «дефектність» і не
+        визначає чиюсь цінність. Ми намагаємося уникати термінів «страждає»,
+        «хворий» або «діагностований синдром MЗКГ». Натомість ми говоримо, що
+        синдром МРКГ просто є.
+        `,
+        p3: `
+        Найважливіше у підтримці - емпатія, вміння вислухати іншу людину та
+        чуйність (або пряме запитання), чи хоче вона взагалі про це розмовляти -
+        не кожна людина з синдромом MРКГ хоче говорити про це і не кожен повинен
+        бути …. активістом. Тому основним є запитання (яке повинно
+        супроводжуватися повідомленням про можливість припинення розмови на
+        засадах безнасінних): «Чи хотіли б ви поговорити про це і чи почуваєтесь
+        комфортно з цим?». Важливо дати простір, не задавати занадто багато
+        питань і поважати встановлені межі. Люди з синдромом МРКГ мають право
+        втомлюватися від запитань, не хотіти на них відповідати чи залишити
+        інформацію про безнасінність лише для самих себе.
+        `,
+        p4: `
+        Важливо перевіряти осіб, з якими ми ділимося своїм досвідом безнасінних,
+        оскільки є люди, які можуть цього не зрозуміти та/або відреагувати в
+        негативний спосіб. Пам’ятайте, що ваш комфорт та безпека є
+        найважливішими, і ви встановлюєте межі.
+        `,
+        p5: `
+        Якщо вам потрібно з кимось поговорити про синдром MРКГ, і ви не знаєте,
+        з чого почати, ми рекомендуємо проговорити в голові вибрані питання, які
+        б ви хотіли обговорити, щоб у реальній ситуації ви не відчували
+        дискомфорту, а сказані вами слова не звучали дивно.
+        `
+    },
+}
+
+const {lang} = Astro.props;
+
+const trans = temp[lang];
+---
+
+<style>
+    img {
+        height: 75px;
+    }
+    p {
+        padding: 8px 0px;
+    }
+    .pestki > div {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+    }
+</style>
+<Page color="violet">
+    <Header slot="header">
+        <PageTitle slot='lhs' title={trans.header}></PageTitle>
+    </Header>
+    <div class="body" slot="body">
+        <>
+        {Object.values(trans).map(d => (
+            <div>{d}</div>
+        ))}
+        </>
+    </div>
+</Page>
