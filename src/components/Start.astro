@@ -55,6 +55,13 @@ const trans = temp[lang];
         font-size: 2.8rem;
         display: flex;
     }
+    .apricot {
+        max-width: 40%;
+        height: auto;
+        position: relative;
+        left: 16px;
+        bottom: 16px;
+    }
 </style>
 <Page color="white">
     <Header slot="header">
@@ -68,8 +75,6 @@ const trans = temp[lang];
         <div class="text">
             {trans.text}
         </div>
-        <Image height={"100%"} fit="contain" src={apricot} alt="apricot" />
-        <div>
-        </div>
+        <!-- <Image class="apricot" format="webp" src={apricot} alt="apricot" /> -->
     </div>
 </Page>

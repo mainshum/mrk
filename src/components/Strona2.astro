@@ -1,6 +1,8 @@
 ---
 import type { Lang } from 'src/types';
 import Page from './Page.astro';
+import {Image} from '@astrojs/image/components';
+import statue from '@images/statue.png';
 
 interface Props {
     lang: Lang
@@ -126,20 +128,35 @@ const trans = temp[lang];
     img {
         height: 75px;
     }
+    .text {
+        display: inline-block;
+        width: 40%;
+    }
     p {
         padding: 8px 0px;
     }
     .footer { 
         font-size: 1.4rem;
     }
+    .kobieta-cont {
+        display: inline-flex;
+    }
+    .kobieta {
+        width: 50%;
+        height: auto;
+    }
 </style>
 <Page color="violet">
     <div class="body" slot="body">
-        <>
+        <div class="text">
         {Object.values(trans).slice(0, 3).map(d => (
             <p>{d}</p>
         ))}
         <p class="footer">{trans.footer}</p>
-        </>
+        </div>
+        <div class="kobieta-cont">
+
+        <Image class="kobieta" format="webp" src={statue} alt="kobieta" />
+        </div>
     </div>
 </Page>
