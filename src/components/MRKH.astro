@@ -247,6 +247,14 @@ const trans = temp[lang];
         align-items: center;
         gap: 20px;
     }
+    @media (max-width: 500px) {
+        .pestki > div {
+            flex-direction: column;
+        }
+        .pestki {
+            padding-top: 20px;
+        }
+    }
 </style>
 <Page color="white">
     <Header slot="header">

@@ -27,6 +27,12 @@ const {color} = Astro.props;
         margin-right: calc(var(--header-h) - 2px);
         border-right: 2px solid;
     }
+    @media (max-width: 1250px) {
+        .body {
+            margin-right: 0;
+            border-right: none;
+        }
+    }
 </style>
 
 <div class:list={['page', {violet: color === 'violet'}, {white: color === 'white'}]}>
