@@ -125,30 +125,39 @@ const trans = temp[lang];
 ---
 
 <style>
-    img {
-        height: 75px;
-    }
     p {
         padding: 8px 0px;
     }
     .footer { 
         font-size: 1.4rem;
     }
-    .kobieta-cont {
-        display: inline-flex;
+    .body {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    .kobieta {
+        width: 40%;
+        height: auto;
+    }
+    @media(max-width: 600px) {
+        .body {
+            flex-direction: column;
+        }
+        .kobieta {
+            width: 100%;
+            padding: 0px 100px 20px 100px;
+        }
     }
 </style>
 <Page color="violet">
     <div class="body" slot="body">
         <div class="text">
-        {Object.values(trans).slice(0, 3).map(d => (
-            <p>{d}</p>
-        ))}
-        <p class="footer">{trans.footer}</p>
+            {Object.values(trans).slice(0, 3).map(d => (
+                <p>{d}</p>
+            ))}
+            <p class="footer">{trans.footer}</p>
         </div>
-        <div class="kobieta-cont">
-
-        <!-- <Image class="kobieta" format="webp" src={statue} alt="kobieta" /> -->
-        </div>
+        <Image width="1936" height="2688" class="kobieta" format="webp" src={statue} alt="kobieta" />
     </div>
 </Page>

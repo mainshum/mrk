@@ -39,11 +39,13 @@ const trans = temp[lang];
 ---
 
 <style>
-    .header-left {
+    .flex {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 20px;
+    }
+    .header-left {
         position: relative;
         right: 8px;
     }
@@ -54,29 +56,39 @@ const trans = temp[lang];
         background: red !important;
     }
     .body {
-        font-size: 2.8rem;
+        font-size: 1.9rem;
         display: flex;
     }
     .apricot {
-        max-width: 40%;
+        width: 40%;
         height: auto;
-        position: relative;
-        left: 16px;
-        bottom: 16px;
+        /* width: auto; */
+    }
+    @media(max-width: 600px) {
+        .body {
+            flex-direction: column;
+            gap: 0px;
+        }
+        .apricot {
+            border-top: 2px solid var(--primary-color);
+            width: 100%;
+            height: auto;
+            padding-left: 100px;
+        }
     }
 </style>
 <Page color="white">
     <Header slot="header">
-        <div class="header-left" slot='lhs'>
+        <div class="header-left flex" slot='lhs'>
             <img class='img' src={womb} alt='Glowna' />
             <PageTitle isBigger={true} title="bezpestkowe"/>
         </div>
         <LangPicker currentLang={lang} slot="rhs" />
     </Header>
-    <div class="body" slot="body">
+    <div class="body flex" slot="body">
         <div class="text">
             {trans.text}
         </div>
-        <!-- <Image class="apricot" format="webp" src={apricot} alt="apricot" /> -->
+        <Image width="2224" height="2901" class="apricot" format="webp" src={apricot} alt="apricot" />
     </div>
 </Page>

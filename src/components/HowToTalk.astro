@@ -4,7 +4,8 @@ import Page from './Page.astro';
 import Pestka from './Pestka.astro';
 import Header from '../layouts/Header.astro';
 import PageTitle from './PageTitle.astro';
-import { objectEnumValues } from '@prisma/client/runtime';
+import {Image} from '@astrojs/image/components';
+import surprise from '@images/surprise.png';
 
 interface Props {
     lang: Lang
@@ -201,16 +202,22 @@ const trans = temp[lang];
         align-items: center;
         gap: 20px;
     }
+    .sur {
+        width: 40%;
+        height: auto;
+        float: right;
+    }
 </style>
 <Page color="violet">
     <Header slot="header">
         <PageTitle slot='lhs' title={trans.header}></PageTitle>
     </Header>
-    <div class="body" slot="body">
-        <>
+    <div class="body pad-body" slot="body">
+        <Image class="sur pad-body" alt="niespodzianka" src={surprise} width="1959" height="1470"></Image>
+        <div>
         {Object.values(trans).map(d => (
             <div>{d}</div>
         ))}
-        </>
+        </div>
     </div>
 </Page>
