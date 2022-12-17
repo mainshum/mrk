@@ -46,7 +46,5 @@ const cities = await prisma.city.findMany({});
                 <CityButton href={`/gabinety/${c.slug}`} name={c.name}/>
             ))}
         </div>
-        <img src={office} alt="Gabinet">
-        <img src={beads} alt="Beads">
     </div>
 </Page>
