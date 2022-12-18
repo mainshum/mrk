@@ -80,7 +80,7 @@ const trans = temp[lang];
 <Page color="white">
     <Header slot="header">
         <div class="header-left flex" slot='lhs'>
-            <img class='img' src={womb} alt='Glowna' />
+            <Image format='webp' width="75" height="75" loading="eager" class='img' src={womb} alt='Glowna' />
             <PageTitle isBigger={true} title="bezpestkowe"/>
         </div>
         <LangPicker currentLang={lang} slot="rhs" />
@@ -89,6 +89,6 @@ const trans = temp[lang];
         <div class="text pad-body">
             {trans.text}
         </div>
-        <Image width="2224" height="2901" class="apricot" format="webp" src={apricot} alt="apricot" />
+        <Image quality="1" loading="eager" format='webp' width="2224" height="2901" class="apricot" format="webp" src={apricot} alt="apricot" />
     </div>
 </Page>

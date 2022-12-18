@@ -17,6 +17,7 @@ const langs = [langsTwice[ind], langsTwice[ind + 1], langsTwice[ind + 2]];
 
 <style>
     img {
+        width: 75px;
         height: 75px;
     }
     button {
@@ -66,7 +67,7 @@ const langs = [langsTwice[ind], langsTwice[ind + 1], langsTwice[ind + 2]];
             <button data-lang={l}>
                 <a href={`/${l}`}>
                     <span class:list={{currentLang: l === currentLang, 'lang-name': true}}>{l}</span>
-                    <img src={pestka} alt="wybor-jezyka"/>
+                    <img alt="wybor-jezyka" width="75" height="75" src={pestka}  />
                 </a>
             </button>
         </div>
