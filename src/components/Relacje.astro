@@ -9,6 +9,8 @@ import Header from '../layouts/Header.astro';
 import PageTitle from "./PageTitle.astro";
 import Pestka from './Pestka.astro';
 import family from "@images/family.png";
+import {Image} from '@astrojs/image/components';
+import cursor from '@images/kursor.svg';
 
 const plTrans = {
     header: "Relacje i macierzyństwo",
@@ -54,15 +56,47 @@ const trans = all[lang];
 ---
 <style>
     .pestka {
-        padding: 20px 20px;
+        gap: 20px;
+        padding: 20px 0px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
+    .pestka p:first-child {
+        padding-top: 20px;
+    }
+    .pars {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
     .top {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+    }
+    @media(max-width: 900px) {
+        .top {
+            flex-direction: column;
+        }
+        .sur {
+            display: none;
+        }
+    }
+    @media(max-width: 450px) {
+        .family {
+            width: 200px !important;
+            height: 282px !important;
+        }
+        .top {
+            gap: 0px !important;
+        }
+    }
+
+    .peeps {
+        display: flex;
         align-items: center;
         gap: 40px;
     }
@@ -74,42 +108,49 @@ const trans = all[lang];
         width: 400px;
         height: 564px;
     }
+    .sur {
+        width: 40%;
+        height: auto;
+    }
 </style>
 
 <Page color="white">
     <Header slot="header">
         <PageTitle slot="lhs" title={trans.header}/>
     </Header>
-    <div slot="body">
+    <div class="pad-body" slot="body">
         <section class="top">
-            <div>
+            <div class="pars">
                 <p>{trans.p1}</p>
                 <p>{trans.p2}</p>
                 <p>{trans.p3}</p>
             </div>
             <div>
-                <!-- <img class="family" src={family} alt="Rodzina"> -->
+                <Image width={400} height={584} class="family" format="webp" src={family} alt="rodzina" />
             </div>
         </section>
         <section class="peeps">
-            <div class="pestka">
-                <Pestka Parent='div' width={60} alt="Pestka-1">
-                    <span>1</span>
-                </Pestka>
-                <p>{trans.pestka1}</p>
-            </div>
-            <div class="pestka">
-                <Pestka Parent='div' width={60} alt="Pestka-2">
-                    <span>2</span>
-                </Pestka>
-                <p>{trans.pestka2}</p>
-            </div>
-            <div class="pestka">
-                <Pestka Parent='div' width={60} alt="Pestka-3">
-                    <span>3</span>
-                </Pestka>
-                <p>{trans.pestka3}</p>
-                <p>{trans.pestka3_2}</p>
+            <Image width={100} height={180} class="sur pad-body" format='webp' src={cursor} alt="kursor"></Image>
+            <div>
+                <div class="pestka">
+                    <Pestka Parent='div' width={60} alt="Pestka-1">
+                        <span>1</span>
+                    </Pestka>
+                    <p>{trans.pestka1}</p>
+                </div>
+                <div class="pestka">
+                    <Pestka Parent='div' width={60} alt="Pestka-2">
+                        <span>2</span>
+                    </Pestka>
+                    <p>{trans.pestka2}</p>
+                </div>
+                <div class="pestka">
+                    <Pestka Parent='div' width={60} alt="Pestka-3">
+                        <span>3</span>
+                    </Pestka>
+                    <p>{trans.pestka3}</p>
+                    <p>{trans.pestka3_2}</p>
+                </div>
             </div>
         </section>
     </div>
