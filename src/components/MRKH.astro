@@ -232,6 +232,8 @@ const temp: Record<Lang, Record<T, string>> = {
 const {lang} = Astro.props;
 
 const trans = temp[lang];
+
+const broszuraLink = `broszura_${lang}.pdf`;
 ---
 
 <style>
@@ -240,6 +242,10 @@ const trans = temp[lang];
     }
     p {
         padding: 8px 0px;
+    }
+    a {
+        text-decoration: none;
+        color: var(--primary-color);
     }
     .pestki > div {
         display: flex;
@@ -264,7 +270,9 @@ const trans = temp[lang];
     <Header slot="header">
         <PageTitle slot='lhs' title={trans.header}/>
         <Pestka Parent='button' isOrange={true} slot='rhs' alt="Pobierz pdf" width={75}>
-            <span>pdf</span>
+            <a href={broszuraLink} download="Broszura.pdf">
+                <span>pdf</span>
+            </a>
         </Pestka>
     </Header>
     <div class="body pad-body" slot="body">
