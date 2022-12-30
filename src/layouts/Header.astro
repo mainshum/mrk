@@ -2,8 +2,18 @@
 const {color} = Astro.props;
 ---
 <style>
+    @media(max-width: 700px) {
+        .right {
+            position: absolute !important;
+            right: 0px;
+            width: var(--header-h);
+            height: var(--header-h);
+            bottom: -52.5px;
+            border-left: none !important;
+        }
+    }
     header {
-        overflow: hidden;
+        position: relative;
         height: var(--header-h);
         border-bottom: 2px solid;
         border-top: 2px solid;
