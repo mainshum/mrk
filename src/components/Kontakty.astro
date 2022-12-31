@@ -9,6 +9,7 @@ import Header from "../layouts/Header.astro";
 import type { Lang } from "../types";
 import {Image} from '@astrojs/image/components';
 import girl from '@images/girl.png';
+import Pestka from './Pestka.astro';
 
 const {lang} = Astro.props;
 
@@ -89,6 +90,7 @@ const rest: Record<Lang, Record<T, string>> = {
 
 const pp = people[lang];
 const rr = rest[lang];
+
 ---
 <style>
     .info {
@@ -106,6 +108,9 @@ const rr = rest[lang];
         width: 672px;
         height: auto;
         align-self: flex-end;
+    }
+    .statut {
+        font-size: 1.5rem;
     }
     @media(max-width: 1100px) {
         .girl {
@@ -129,16 +134,16 @@ const rr = rest[lang];
             align-self: center;
         }
     }
-
-    [class^="icon"]::before {
-        position: relative;
-        right: 7px;
-    }
-    
 </style>
 <Page color="white">
     <Header slot="header">
         <PageTitle slot="lhs" title={rr.header}/>
+        <Pestka Parent='button' isOrange={true} slot='rhs' alt="Pobierz pdf" width={75}>
+            <a class='pestka' href="/bezpestkowe_statut.pdf" download="Statut.pdf">
+                <div class="icon-download"></div>
+                <div class='statut'>Statut</div>
+            </a>
+        </Pestka>
     </Header>
     <div class="info wrapper pad-body" slot="body">
         <div>

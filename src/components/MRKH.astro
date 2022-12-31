@@ -243,10 +243,6 @@ const broszuraLink = `broszura_${lang}.pdf`;
     p {
         padding: 8px 0px;
     }
-    a {
-        text-decoration: none;
-        color: var(--primary-color);
-    }
     .pestki > div {
         display: flex;
         justify-content: flex-start;
@@ -270,8 +266,9 @@ const broszuraLink = `broszura_${lang}.pdf`;
     <Header slot="header">
         <PageTitle slot='lhs' title={trans.header}/>
         <Pestka Parent='button' isOrange={true} slot='rhs' alt="Pobierz pdf" width={75}>
-            <a href={broszuraLink} download="Broszura.pdf">
-                <span>pdf</span>
+           <a class="pestka" href={broszuraLink} download="Broszura.pdf">
+                <div class="icon-download"></div>
+                <div>pdf</div>
             </a>
         </Pestka>
     </Header>
