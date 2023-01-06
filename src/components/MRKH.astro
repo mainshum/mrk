@@ -4,6 +4,10 @@ import Page from './Page.astro';
 import Pestka from './Pestka.astro';
 import Header from '../layouts/Header.astro';
 import PageTitle from './PageTitle.astro';
+import {Image} from '@astrojs/image/components';
+import anatomy from '@images/anatomy.png';
+import marrow from '@images/marrow.png';
+import dildo from '@images/dildo.png';
 
 interface Props {
     lang: Lang
@@ -243,24 +247,66 @@ const broszuraLink = `broszura_${lang}.pdf`;
     p {
         padding: 8px 0px;
     }
-    .pestki > div {
+    .pestkas {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        gap: 20px;
+        gap: 40px;
         padding-top: 20px;
     }
     .pdf {
         font-size: var(--font-mini);
     }
-    @media (max-width: 500px) {
-        .pestki > div {
+    .flex {
+        display: flex;
+        align-items: center;
+    }
+    @media(max-width: 1100px) {
+        .middle {
             flex-direction: column;
         }
-        .pestki span {
+        .pestki img {
+            display: none;
+        }
+    }
+    @media(max-width: 850px) {
+        .top {
+            flex-direction: column;
+        }
+    }
+    .anatomy {
+        width: 400px;
+        height: auto;
+    }
+    .dildo {
+        width: 300px;
+        height: auto;
+    }
+    img.pad100 {
+        padding: 100px 100px;
+    }
+    section.pad100 {
+        padding: 0px 100px;
+    }
+    @media(max-width: 800px) {
+        section.pad100 {
+            padding: 0px;
+        }
+    }
+    @media(max-width: 500px) {
+        .anatomy {
+            padding: 30px !important;
+            width: 150px;
+        }
+    }
+    @media (max-width: 500px) {
+        .pestkas {
+            flex-direction: column;
+        }
+        .pestkas span {
             align-self: flex-start;
         }
-        .pestki {
+        .pestkas {
             padding-top: 20px;
         }
     }
@@ -276,25 +322,36 @@ const broszuraLink = `broszura_${lang}.pdf`;
         </Pestka>
     </Header>
     <div class="body pad-body" slot="body">
-        <section class="top">
-            <p>{trans.p1}</p>
-            <p>{trans.p2}</p>
+        <section class="flex top">
+            <div>
+                <p>{trans.p1}</p>
+                <p>{trans.p2}</p>
+            </div>
+            <Image format='webp' width={300} class="anatomy pad100" src={anatomy} alt="anatomia" />
         </section>
-        <section class="middle">
-            <p>{trans.p3}</p>
-            <p>{trans.p4}</p>
-            <p>{trans.p5}</p>
-            <p>{trans.p6}</p>
-        </section>
-        <section class="pestki">
-            {(["p7", "p8", "p9"] as const).map((d, ind) => (
+        <section class="pad100">
+            <section class="flex middle">
                 <div>
-                    <Pestka width={60} alt={d} Parent="div">
-                        <span>{ind + 1}</span>
-                    </Pestka>
-                    <span>{trans[d]}</span>
+                    <p>{trans.p3}</p>
+                    <p>{trans.p4}</p>
+                    <p>{trans.p5}</p>
+                    <p>{trans.p6}</p>
                 </div>
-            ))}
+                <Image format='webp' width={400} class="anatomy marrow pad100" src={marrow} alt="komorka" />
+            </section>
+            <section class="pestki flex">
+                <div>
+                    {(["p7", "p8", "p9"] as const).map((d, ind) => (
+                        <div class="pestkas">
+                            <Pestka width={60} alt={d} Parent="div">
+                                <span>{ind + 1}</span>
+                            </Pestka>
+                            <span>{trans[d]}</span>
+                        </div>
+                    ))}
+                </div>
+                <Image format='webp' width={200} class="dildo pad100" src={dildo} alt="obraz" />
+            </section>
         </section>
     </div>
 </Page>
