@@ -37,8 +37,11 @@ const langs = [langsTwice[ind], langsTwice[ind + 1], langsTwice[ind + 2]];
         font-size: 2rem;
         color: var(--secondary-color);
     }
+    .lang-name:hover {
+        text-decoration: underline;
+    }
     .lang-slider {
-        transition: right 0.3s;
+        transition: right 0.5s ease-out;
         /* border-left: 2px solid var(--primary-color); */
         transition-timing-function: ease-out;
         display: flex;
@@ -56,7 +59,15 @@ const langs = [langsTwice[ind], langsTwice[ind + 1], langsTwice[ind + 2]];
     .lang-wrapper {
         display: flex;
         justify-content: center;
-        width: calc(var(--header-h))
+        width: calc(var(--header-h));
+    }
+    .lang-wrapper:first-child {
+        border-left: 2px solid ;
+    }
+    @media(max-width: 700px) {
+        .lang-wrapper:first-child {
+            border-left: none;
+        }
     }
 </style>
 
