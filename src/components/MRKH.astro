@@ -250,6 +250,9 @@ const broszuraLink = `broszura_${lang}.pdf`;
         gap: 20px;
         padding-top: 20px;
     }
+    .pdf {
+        font-size: var(--font-mini);
+    }
     @media (max-width: 500px) {
         .pestki > div {
             flex-direction: column;
@@ -268,7 +271,7 @@ const broszuraLink = `broszura_${lang}.pdf`;
         <Pestka Parent='button' isOrange={true} slot='rhs' alt="Pobierz pdf" width={75}>
            <a class="pestka" href={broszuraLink} download="Broszura.pdf">
                 <div class="icon-download"></div>
-                <div>pdf</div>
+                <div class="pdf">pdf</div>
             </a>
         </Pestka>
     </Header>
