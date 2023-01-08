@@ -62,8 +62,8 @@ const plTrans = {
     wytworzenie pochwy. Pamiętaj, żeby przed rozpoczęciem działań w tym kierunku
     skontaktować się z lekarką/lekarzem prowadzącą/-ym. Którąkolwiek z opcji
     wybierzesz, udany i satysfakcjonujący seks pomimo zespołu MRKH jest możliwy.
-    Jego jakość nie zależy od tego, czy Twoja pochwa ma 4 czy 7 centymetrów, ale
-    od tego, z kim decydujesz się współżyć.
+    <span class="bold">Jego jakość nie zależy od tego, czy Twoja pochwa ma 4 czy 7 centymetrów, ale
+    od tego, z kim decydujesz się współżyć. </span>
     `,
     p7: `
     Pierwszą możliwością jest rozciągnięcie pochwy z osobą partnerską — jeśli
@@ -141,8 +141,8 @@ const temp: Record<Lang, Record<T, string>> = {
         choose to have penetrative sex, there are three ways to create a vagina.
         Remember to check with your health care provider before doing this.
         Whichever option you choose, successful and satisfying sex despite MRKH
-        is possible. The quality of sex does not depend on whether your vagina
-        is 4 or 7 centimetres long, but on who you choose to have sex with.
+        is possible. <span class="bold">The quality of sex does not depend on whether your vagina
+        is 4 or 7 centimetres long, but on who you choose to have sex with. </span>
         `,
         p7: `
         The first option is vaginal stretching with a partner - if you have
@@ -215,8 +215,8 @@ const temp: Record<Lang, Record<T, string>> = {
         “створення” піхви. Не забувайте проконсультуватися з лікарем перед
         початком будь-яких дій у цьому напрямку. Який би варіант ви не вибрали,
         успішний і задовільний секс, незважаючи на синдром МРКГ, можливий.
-        Якість процесу залежить не від того, чи Ваша вагіна має 4 чи 7
-        сантиметрів, а від того, з ким ви вирішили вступити в статевий акт.
+        <span class="bold">Якість процесу залежить не від того, чи Ваша вагіна має 4 чи 7
+        сантиметрів, а від того, з ким ви вирішили вступити в статевий акт. </span>
         `,
         p7: `
         Перший варіант - розтягнути піхву разом зі своїм партнером - якщо у вас
@@ -335,7 +335,7 @@ const broszuraLink = `broszura_${lang}.pdf`;
                     <p>{trans.p3}</p>
                     <p>{trans.p4}</p>
                     <p>{trans.p5}</p>
-                    <p>{trans.p6}</p>
+                    <p set:html={trans.p6} />
                 </div>
                 <Image format='webp' width={400} class="anatomy marrow pad100" src={marrow} alt="komorka" />
             </section>

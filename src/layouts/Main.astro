@@ -6,8 +6,11 @@
         font-family: 'Monarcha';
         src: url('/fonts/Monarcha/font.woff') format('woff');
         font-weight: normal;
-        font-style: normal;
-        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Monarcha Bold';
+        src: url('/fonts/MonarchaBold/font.woff') format('woff');
+        font-weight: bold;
     }
     html {
         --primary-color: rgb(102, 20, 181);
@@ -29,6 +32,10 @@
         padding: 0;
         margin: 0;
         box-sizing: border-box;
+    }
+    .bold {
+        font-family: 'Monarcha Bold';
+        font-weight: bolder;
     }
     a.pestka {
         text-decoration: none;
