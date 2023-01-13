@@ -14,7 +14,9 @@ interface Props {
 
 const plTrans = {
     header: `Jak rozmawiać o zespole MRKH?`,
-    text: `Bezpestkowe to projekt założony w 2018 roku, którego celem jest nie tylko aktywne wspieranie osób z zespołem Mayera-Rokitansky’ego-Küstera-Hausera, ale również uświadamianie i edukowanie społeczeństwa. Nazwa nawiązuje do pestki owocu i przyrównania jej do macicy — owoce pestkowe różnią się od bezpestkowych tylko posiadaniem pestki, która przecież niczego nie definiuje.`
+    text: `Bezpestkowe to projekt założony w 2018 roku, którego celem jest nie tylko aktywne wspieranie osób z zespołem Mayera-Rokitansky’ego-Küstera-Hausera, 
+    ale również uświadamianie i edukowanie społeczeństwa. Nazwa nawiązuje do pestki owocu i przyrównania jej do macicy — owoce pestkowe różnią się od bezpestkowych 
+    tylko posiadaniem pestki, która przecież niczego nie definiuje. W 2022 Bezpestkowe zostały sformalizowane i stanowią Fundację.`
 }
 
 type T = keyof typeof plTrans;
@@ -23,7 +25,9 @@ const temp: Record<Lang, Record<T, string>> = {
     "pl": plTrans,
     "en": {
         header: plTrans.header,
-        text: `Bezpestkowe (pl. “seedless”) is a project founded in 2018 that aims not only to actively support people with Mayer-Rokitansky-Küster-Hauser syndrome, but also to raise awareness and educate the public. The name refers to the seed of fruit and compares it to the uterus - stone fruit differs from seedless fruit only by having a seed, which after all does not define anything.`
+        text: `Bezpestkowe (pl. “seedless”) is a project founded in 2018 that aims not only to actively support people with Mayer-Rokitansky-Küster-Hauser syndrome, 
+        but also to raise awareness and educate the public. The name refers to the seed of fruit and compares it to the uterus - stone fruit differs from seedless 
+        fruit only by having a seed, which after all does not define anything. Bezpestkowe operate as a foundation since their formation in 2022`
     },
     "ua": {
         header: plTrans.header,
@@ -56,6 +60,7 @@ const trans = temp[lang];
     .body {
         font-size: 3rem;
         display: flex;
+        min-height: calc(100vh - var(--header-h));
     }
     .apricot {
         width: 35.5%;
