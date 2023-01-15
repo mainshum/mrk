@@ -62,26 +62,14 @@ const trans = temp[lang];
         display: flex;
         min-height: calc(100vh - var(--header-h));
     }
-    .apricot {
-        width: 35.5%;
-        height: auto;
-        /* width: auto; */
-    }
     @media(max-width: 900px) {
         .body {
-            font-size: 2.5rem;
+            font-size: var(--font-medium);
         }
     }
-    @media(max-width: 600px) {
+    @media(max-width: 400px) {
         .body {
-            flex-direction: column;
-            gap: 0px;
-        }
-        .apricot {
-            border-top: 2px solid var(--primary-color);
-            width: 100%;
-            height: auto;
-            padding-left: 100px;
+            font-size: var(--font-small);
         }
     }
 </style>
@@ -93,10 +81,10 @@ const trans = temp[lang];
         </div>
         <LangPicker currentLang={lang} slot="rhs" />
     </Header>
-    <div class="body flex" slot="body">
+    <div class="body img-cont flex" slot="body">
         <div class="text pad-body">
             {trans.text}
         </div>
-        <Image quality={1} loading="eager" format='webp' width={2224} height={2901} class="apricot" src={apricot} alt="apricot" />
+        <Image quality={1} loading="eager" format='webp' width={2224} height={2901} class="apricot img-res" src={apricot} alt="apricot" />
     </div>
 </Page>

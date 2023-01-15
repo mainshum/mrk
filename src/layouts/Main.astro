@@ -59,6 +59,29 @@
     .pad-body {
         padding: 20px;
     }
+
+    .img-res {
+        width: 400px;
+        height: auto;
+    }
+
+    @media(max-width: 800px) {
+        .img-res {
+            width: 300px;
+        }
+    }
+    @media(max-width: 600px) {
+        .img-cont {
+            flex-direction: column;
+            gap: 0px;
+        }
+        .img-res {
+            /* border-top: 2px solid var(--primary-color); */
+            width: 70%;
+            height: auto;
+        }
+    }
+
 </style>
 
 <html lang="en">

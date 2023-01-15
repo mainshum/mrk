@@ -136,14 +136,14 @@ const trans = temp[lang];
         gap: 20px;
         align-items: center;
     }
-    .kobieta {
+    /* .kobieta {
         align-self: flex-start;
         position: relative;
         bottom: 16px;
         width: 40%;
         height: auto;
-    }
-    @media(max-width: 600px) {
+    } */
+    /* @media(max-width: 600px) {
         .body {
             flex-direction: column;
         }
@@ -151,16 +151,16 @@ const trans = temp[lang];
             width: 100%;
             padding: 0px 100px 20px 100px;
         }
-    }
+    } */
 </style>
 <Page color="violet">
-    <div class="body pad-body" slot="body">
+    <div class="body img-cont pad-body" slot="body">
         <div class="text">
             {Object.values(trans).slice(0, 3).map(d => (
                 <p>{d}</p>
             ))}
             <p class="footer">{trans.footer}</p>
         </div>
-        <Image quality={1} width={1936} height={2688} class="kobieta" format="webp" src={statue} alt="kobieta" />
+        <Image quality={1} width={1936} height={2688} class="kobieta img-res" format="webp" src={statue} alt="kobieta" />
     </div>
 </Page>
