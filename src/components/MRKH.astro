@@ -257,6 +257,9 @@ const broszuraLink = `broszura_${lang}.pdf`;
     .pdf {
         font-size: var(--font-mini);
     }
+    .orange {
+        color: var(--orange-color);
+    }
     .flex {
         display: flex;
         align-items: center;
@@ -344,7 +347,7 @@ const broszuraLink = `broszura_${lang}.pdf`;
                     {(["p7", "p8", "p9"] as const).map((d, ind) => (
                         <div class="pestkas">
                             <Pestka width={60} alt={d} Parent="div">
-                                <span>{ind + 1}</span>
+                                <span class="orange">{ind + 1}</span>
                             </Pestka>
                             <span>{trans[d]}</span>
                         </div>
