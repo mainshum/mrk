@@ -136,32 +136,20 @@ const trans = temp[lang];
         gap: 20px;
         align-items: center;
     }
-    /* .kobieta {
-        align-self: flex-start;
-        position: relative;
-        bottom: 16px;
-        width: 40%;
-        height: auto;
-    } */
-    /* @media(max-width: 600px) {
-        .body {
-            flex-direction: column;
-        }
-        .kobieta {
-            width: 100%;
-            padding: 0px 100px 20px 100px;
-        }
-    } */
+    .flex {
+        display: flex;
+        align-items: flex-start;
+    }
 </style>
 <Page color="violet">
-    <div class="body img-cont pad-body" slot="body">
-        <div class="text">
+    <div class="body img-cont" slot="body">
+        <div class="img-cont_text pad-body">
             <p>{trans.p1}</p>
             <p>{trans.p2}</p>
             <p>{trans.p3}</p>
             <p>{trans.p4}</p>
             <p class="footer">{trans.footer}</p>
         </div>
-        <Image quality={1} width={1936} height={2688} class="kobieta img-res" format="webp" src={statue} alt="kobieta" />
+        <Image width={1936} height={2688} class="kobieta img-cont_img" format="webp" src={statue} alt="kobieta" />
     </div>
 </Page>
