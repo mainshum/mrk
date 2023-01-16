@@ -156,9 +156,10 @@ const trans = temp[lang];
 <Page color="violet">
     <div class="body img-cont pad-body" slot="body">
         <div class="text">
-            {Object.values(trans).slice(0, 3).map(d => (
-                <p>{d}</p>
-            ))}
+            <p>{trans.p1}</p>
+            <p>{trans.p2}</p>
+            <p>{trans.p3}</p>
+            <p>{trans.p4}</p>
             <p class="footer">{trans.footer}</p>
         </div>
         <Image quality={1} width={1936} height={2688} class="kobieta img-res" format="webp" src={statue} alt="kobieta" />
