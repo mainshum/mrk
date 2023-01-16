@@ -2,7 +2,7 @@
 interface Props {
     currentLang: Lang
 }
-import pestka from '@images/pestka.svg';
+import pestka from '@images/pestka_orange.svg';
 import { allowed, Lang } from 'src/types';
 
 const {currentLang} = Astro.props;
@@ -54,7 +54,7 @@ const langs = [langsTwice[ind], langsTwice[ind + 1], langsTwice[ind + 2]];
         right: 0;
     }
     .currentLang {
-        color: var(--orange-color);
+        color: var(--primary-color);
     }
     .lang-wrapper {
         display: flex;
