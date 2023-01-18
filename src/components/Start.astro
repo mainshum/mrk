@@ -16,7 +16,7 @@ const plTrans = {
     header: `Jak rozmawiać o zespole MRKH?`,
     text: `Bezpestkowe to projekt założony w 2018 roku, którego celem jest nie tylko aktywne wspieranie osób z zespołem Mayera-Rokitansky’ego-Küstera-Hausera, 
     ale również uświadamianie i edukowanie społeczeństwa. Nazwa nawiązuje do pestki owocu i przyrównania jej do macicy — owoce pestkowe różnią się od bezpestkowych 
-    tylko posiadaniem pestki, która przecież niczego nie definiuje. W 2022 Bezpestkowe zostały sformalizowane i stanowią Fundację.`
+    tylko posiadaniem pestki, która przecież niczego nie definiuje. W 2022 roku Bezpestkowe zostały sformalizowane i stanowią Fundację.`
 }
 
 type T = keyof typeof plTrans;
@@ -27,7 +27,7 @@ const temp: Record<Lang, Record<T, string>> = {
         header: plTrans.header,
         text: `Bezpestkowe (pl. “seedless”) is a project founded in 2018 that aims not only to actively support people with Mayer-Rokitansky-Küster-Hauser syndrome, 
         but also to raise awareness and educate the public. The name refers to the seed of fruit and compares it to the uterus - stone fruit differs from seedless 
-        fruit only by having a seed, which after all does not define anything. Bezpestkowe operate as a foundation since their formation in 2022`
+        fruit only by having a seed, which after all does not define anything. Since 2022 Bezpestkowe has been functioning as a Foundation.`
     },
     "ua": {
         header: plTrans.header,
@@ -45,6 +45,9 @@ const trans = temp[lang];
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .flex__header {
+        gap: 8px;
     }
     .header-left {
         position: relative;
@@ -72,10 +75,21 @@ const trans = temp[lang];
             font-size: var(--font-small);
         }
     }
+
+    @media(max-width: 915px) {
+        .img-cont {
+            flex-direction: column;
+        }
+        .img-cont_img {
+            border-top: 2px solid var(--primary-color);
+            width: 100% !important;
+        }
+    }
+
 </style>
 <Page color="white">
     <Header slot="header">
-        <div class="header-left flex" slot='lhs'>
+        <div class="header-left flex flex__header" slot='lhs'>
             <Image format='webp' width="75" height="75" loading="eager" class='img' src={womb} alt='Glowna' />
             <PageTitle isBigger={true} title="bezpestkowe"/>
         </div>

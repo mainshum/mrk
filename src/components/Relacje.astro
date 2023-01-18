@@ -89,7 +89,7 @@ const trans = all[lang];
     }
     @media(max-width: 900px) {
         .top {
-            flex-direction: column;
+            flex-direction: column-reverse;
         }
         .sur {
             display: none;
@@ -129,6 +129,7 @@ const trans = all[lang];
         <PageTitle slot="lhs" title={trans.header}/>
     </Header>
     <div class="pad-body" slot="body">
+        <a href="#relacje"/>
         <section class="top">
             <div class="pars">
                 <p set:html={trans.p1} />

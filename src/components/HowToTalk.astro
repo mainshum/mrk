@@ -199,12 +199,6 @@ const trans = temp[lang];
     p {
         padding: 8px 0px;
     }
-    .pestki > div {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 20px;
-    }
     section {
         display: flex;
         gap: 20px;
@@ -233,9 +227,17 @@ const trans = temp[lang];
         padding-left: 100px;
     }
     @media(max-width: 600px) {
-        img {
+        section img {
             display: none;
         }
+        .first-section {
+            flex-flow: column-reverse;
+        }
+        .first-section img {
+            display: initial;
+            width: 360px;
+        }
+
         .d1, .d2 {
             padding: 0px;
         }
@@ -246,7 +248,7 @@ const trans = temp[lang];
         <PageTitle slot='lhs' title={trans.header}></PageTitle>
     </Header>
     <div class="body pad-body" slot="body">
-        <section>
+        <section class="first-section">
             <div>
                 <div set:html={trans.p1} />
                 <div set:html={trans.p2} />

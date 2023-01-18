@@ -23,7 +23,7 @@ const cities = await prisma.city.findMany({});
         align-items: center;
     }
     .miasta {
-        flex-basis: calc(100% - 600px);
+        flex-basis: calc(100% - 60%);
         display: flex;
         flex-wrap: wrap;
         gap: 40px;
@@ -32,16 +32,22 @@ const cities = await prisma.city.findMany({});
         width: 434px;
         height: auto;
     }
-    .wrapper {
+    .office {
+        width: 60%;
+    }
+    /* .wrapper {
         display: flex;
-        flex-basis: 600px;
+        flex-basis: 60%;
         flex-grow: 1;
         justify-content: center;
         align-items: center;
-    }
+    } */
     @media(max-width: 750px) {
-        .wrapper {
-            display: none;
+        .gabinety {
+            flex-direction: column-reverse;
+        }
+        .office {
+            padding: 20px 0px 40px 0px;
         }
         .miasta {
             flex-basis: auto;
@@ -63,8 +69,6 @@ const cities = await prisma.city.findMany({});
                 <CityButton href={`/gabinety/${c.slug}`} name={c.name}/>
             ))}
         </div>
-        <div class="wrapper">
-            <Image format='webp' width={434} height={600} class="office" src={office} alt="gabinet" />
-        </div>
+        <Image format='webp' width={434} height={600} class="office" src={office} alt="gabinet" />
     </div>
 </Page>

@@ -140,6 +140,15 @@ const trans = temp[lang];
         display: flex;
         align-items: flex-start;
     }
+
+    @media(max-width: 915px) {
+        .img-cont_text {
+            flex-basis: 100%;
+        }
+        .img-cont_img {
+            display: none;
+        }
+    }
 </style>
 <Page color="violet">
     <div class="body img-cont" slot="body">
