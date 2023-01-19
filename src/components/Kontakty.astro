@@ -27,24 +27,28 @@ const people: Record<Lang, [string, string][]> = {
         ['Maria Zdulska', 'rachunkowość i księgowość'],
     ],
     'en': [
-        ['Mikołaj Hałabuda', 'projekt broszur'],
-        ['Zofka Kofta', 'projekt strony internetowej'],
-        ['Kozlow', 'ilustracje'],
-        ['Paulina Puchalska', 'redakcja i korekty tekstów'],
-        ['Magda Domagała', 'przekład tekstów na język angielski'],
-        ['Czarek Polak', 'web development'],
+        ['Zuzanna Piontke', 'Bezpestkowe founder '],
+        ['Agata Śmiałkowska', 'Bezpestkowe co-coordinator'],
+        ['Mikołaj Hałabuda', 'booklets'],
+        ['Zofka Kofta', 'web design'],
+        ['Kozlow', 'images and iconographics'],
+        ['Paulina Puchalska', 'text and correction'],
+        ['Magda Domagała', 'english translations'],
+        ['Czarek Polak', 'web development '],
         ['Aleksander Przeszło', 'web development'],
-        ['Maria Zdulska', 'rachunkowość i księgowość'],
+        ['Maria Zdulska', 'bookkeeping and accounting'],
     ],
     'ua': [
-        ['Mikołaj Hałabuda', 'projekt broszur'],
-        ['Zofka Kofta', 'projekt strony internetow'],
-        ['Kozlow', 'ilustracje'],
-        ['Paulina Puchalska', 'redakcja i korekty tekstów'],
-        ['Magda Domagała', 'przekład tekstów na język angielski'],
-        ['Czarek Polak', 'web development'],
-        ['Aleksander Przeszło', 'web development'],
-        ['Maria Zdulska', 'rachunkowość i księgowość'],
+        ['Зузанна Піонтке', 'засновниця проекту Безнасінні'],
+        ['Агата Шмялковська', 'співкоординаторка проекту Безнасінні'],
+        ['Міколай Халабуда', 'дизайн брошур'],
+        ['Зофка Кофта', 'дизайн сайту'],
+        ['Козлов', ' ілюстрації'],
+        ['Пауліна Пухальська', 'редагування та вичитка текстів'],
+        ['Магда Домагала', 'переклад текстів англійською мовою'],
+        ['Чарек Полак', 'веб-розробка'],
+        ['Олександр Пшесло', 'веб-розробка'],
+        ['Марія Здульська', ' бухгалтерія'],
     ],
 }
 
@@ -213,7 +217,7 @@ const rr = rest[lang];
             </section>
             <section class="other">
                 <div>{rr.coop}</div>
-                {pp.map(([name, pos]) => (
+                {pp.slice(3, pp.length).map(([name, pos]) => (
                     <div>
                         <span>{name}</span>
                         <span>-</span>
