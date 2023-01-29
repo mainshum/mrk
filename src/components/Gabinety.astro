@@ -10,6 +10,7 @@ import Page from './Page.astro';
 import PageTitle from './PageTitle.astro';
 import Header from '../layouts/Header.astro';
 import office from '@images/office.png';
+import beads from '@images/beads.png';
 import type { Lang } from "src/types";
 import {Image} from '@astrojs/image/components';
 
@@ -19,21 +20,22 @@ const cities = await prisma.city.findMany({});
 <style>
     .gabinety {
         display: flex;
+        gap: 40px;
         justify-content: space-between;
         align-items: center;
     }
     .miasta {
-        flex-basis: calc(100% - 60%);
         display: flex;
         flex-wrap: wrap;
         gap: 40px;
     }
     .office {
+        height: 600px;
         width: 434px;
-        height: auto;
     }
-    .office {
-        width: 60%;
+    .beads {
+        width: 113px;
+        height: 774px;
     }
     /* .wrapper {
         display: flex;
@@ -42,20 +44,23 @@ const cities = await prisma.city.findMany({});
         justify-content: center;
         align-items: center;
     } */
-    @media(max-width: 750px) {
+    @media(max-width: 1090px) {
+        .miasta {
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+    @media(max-width: 900px) {
         .gabinety {
             flex-direction: column-reverse;
         }
+        .beads {display: none;}
+    }
+    @media(max-width: 520px) {
         .office {
-            padding: 20px 0px 40px 0px;
+            height: auto;
+            width: 80%;
         }
-        .miasta {
-            flex-basis: auto;
-            width: 100%;
-            flex-direction: column;
-            align-items: center;
-        }
-
     }
 </style>
 
@@ -70,5 +75,6 @@ const cities = await prisma.city.findMany({});
             ))}
         </div>
         <Image format='webp' width={434} height={600} class="office" src={office} alt="gabinet" />
+        <Image format='webp' width={113} height={774} class="beads" src={beads} alt="paciorki" />
     </div>
 </Page>
