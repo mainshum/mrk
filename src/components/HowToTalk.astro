@@ -204,9 +204,16 @@ const trans = temp[lang];
         gap: 20px;
         align-items: center;
     }
-    .sur {
-        width: 40%;
-        height: auto;
+    .surprise {
+        width: 400px;
+        height: 300px;
+    }
+    .kursor {
+        padding-right: 50px !important;
+    }
+    .kursor img {
+        width: 100px;
+        height: 180px;
     }
     .beads {
        width: 100px;
@@ -226,8 +233,11 @@ const trans = temp[lang];
     .d2 {
         padding-left: 100px;
     }
-    @media(max-width: 600px) {
-        section img {
+    .pad { 
+        padding-bottom: 16px;
+    }
+    @media(max-width: 1000px) {
+        .kursor img,.beads {
             display: none;
         }
         .first-section {
@@ -250,12 +260,12 @@ const trans = temp[lang];
     <div class="body pad-body" slot="body">
         <section class="first-section">
             <div>
-                <div set:html={trans.p1} />
+                <div class="pad" set:html={trans.p1} />
                 <div set:html={trans.p2} />
             </div>
-            <Image format='webp' class="sur pad-body" alt="niespodzianka" src={surprise} width="1959" height="1470"></Image>
+            <Image format='webp' class="sur surprise pad-body" alt="niespodzianka" src={surprise} width={400} height={300}></Image>
         </section>
-        <section>
+        <section class='kursor'>
             <Image format='webp' class="sur pad-body" alt="kursor" src={cursor} width="100" height="180"></Image>
             <div set:html={trans.p3} />
         </section>
