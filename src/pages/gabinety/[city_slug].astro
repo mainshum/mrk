@@ -6,10 +6,16 @@ import PageTitle from "../../components/PageTitle.astro";
 import type { Specialization } from "../../types";
 import Main from "../../layouts/Main.astro";
 
+const sortDoctors = (a: Doctor, b: Doctor) => {
+  return a.name.localeCompare(b.name);
+}
+
 const reduceSpec = (drs: Doctor[]) => (acc: Specialization[], cv: Spec) =>
   acc.concat({
     specName: cv.name,
-    drs: drs.filter((d) => d.spec_id === cv.id),
+    drs: drs
+      .filter((d) => d.spec_id === cv.id)
+      .sort(sortDoctors)
   });
 
 export async function getStaticPaths() {
@@ -81,10 +87,10 @@ const specializations: Specialization[] = specs
                     <h2>{s.specName}</h2>
                     {s.drs.map((d) => (
                         <ul class="traits">
-                        <li>{d.room}</li>
-                        <li>{d.name}</li>
-                        <li>{d.address}</li>
-                        <li>{d.phone}</li>
+                          <li>{d.room}</li>
+                          {d.name && <li>{d.name}</li>}
+                          <li>{d.address}</li>
+                          <li>{d.phone}</li>
                         </ul>
                     ))}
                 </div>
