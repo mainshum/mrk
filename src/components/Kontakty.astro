@@ -14,6 +14,18 @@ import Pestka from './Pestka.astro';
 const {lang} = Astro.props;
 
 const people: Record<Lang, [string, string][]> = {
+    'fr': [
+        ['Zuzanna Piontke', 'fondatrice du projet Bezpestkowe'],
+        ['Agata Śmiałkowska', 'coordinatrice du projet Bezpestkowe'],
+        ['Mikołaj Hałabuda', 'conception des brochures'],
+        ['Zofka Kofta', 'conception de la page web'],
+        ['Kozlow', 'illustrations'],
+        ['Paulina Puchalska', 'rédaction et correction des textes'],
+        ['Magda Domagała', 'traduction des textes en anglais'],
+        ['Czarek Polak', 'web development'],
+        ['Aleksander Przeszło', 'web development'],
+        ['Maria Zdulska', 'comptabilité'],
+    ],
     'pl': [
         ['Zuzanna Piontke', 'założycielka projektu Bezpestkowe'],
         ['Agata Śmiałkowska', 'współkoordynatorka projektu Bezpestkowe'],
@@ -68,6 +80,17 @@ type T = keyof typeof plTrans;
 
 const rest: Record<Lang, Record<T, string>> = {
     "pl": plTrans,
+    "fr": {
+        header: "Contact:",
+        phone: `Téléphone`,
+        email: `Email`,
+        fb: `Groupe pour les personnes Bezpestkowe`,
+        fbSupport: `Groupe pour les personnes qui soutiennent les personnes Bezpestkowe`,
+        patronite: `Soutenez-nous sur Patronite.pl`,
+        coop: `Soutènement: `,
+        daneFund: `À propos de nous`,
+        teamHeader: `L’équipe:`
+    },
     "en": {
         header: 'Contact information',
         phone: 'Phone',

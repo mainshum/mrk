@@ -25,16 +25,85 @@ const plTrans = {
     <span class="bold">posiadanie zespołu MRKH nie wyklucza zostania rodzicem </span>
     (oczywiście o ile tego w ogóle chcemy). Istnieją na to różne sposoby:`,
     p3: '',
-    pestka1: "Pierwszą możliwością jest transplantacja macicy (przyp. red. przeszczep), która wciąż jest uznawana za leczenie eksperymentalne i ze względów anatomicznych nie może być przeprowadzona u wszystkich pacjentek z zespołem MRKH. Aktualnie na świecie jest ponad dziesięcioro dzieci urodzonych przez pacjentki z zespołem MRKH. Do tej pory najbardziej znane precedensy to te z 2014 i 2017 roku, kiedy kolejno w Szwecji i Brazylii pacjentki z zespołem MRKH urodziły żywe dzieci — w pierwszym przypadku z macicy przeszczepionej od żyjącej dawczyni, w drugim od zmarłej. Macica nie jest narządem niezbędnym do życia i przeszczepia się ją tylko i wyłącznie na potrzeby jednej ciąży (po porodzie zostaje ona usunięta). Choć operacja jest bardzo skomplikowana i obciążająca zarówno dla dawczyni, jak i dla biorczyni, jest możliwa.",
-    pestka2: "Drugą możliwością jest surogacja, która polega na zapłodnieniu pozamacicznym z transferem zarodka do matki zastępczej (przyp. red. surogatki). W ten sposób pacjentka z zespołem MRKH może być genetycznym rodzicem, ponieważ z punktu widzenia jajnikowego osoby z zespołem MRKH są płodne.",
-    pestka3: `Trzecią (i obecnie jedyną dostępną w Polsce z punktu prawnego) możliwością jest adopcja, jednak w celu rozpoczęcia procedury adopcyjnej należy być w co najmniej czteroletnim związku małżeńskim.`,
-    pestka3_2: `Warto podkreślić, że są osoby, które realizują potrzebę rodzicielstwa w inny sposób, np. związując się z osobą, która ma dziecko/dzieci, angażując się jako opiekunka, bliska przyjaciółka rodziny itd.`
+    pestka1: `Pierwszą możliwością jest transplantacja macicy (przyp. red.
+    przeszczep), która wciąż jest uznawana za leczenie eksperymentalne i ze
+    względów anatomicznych nie może być przeprowadzona u wszystkich pacjentek z
+    zespołem MRKH. Aktualnie na świecie jest ponad dziesięcioro dzieci
+    urodzonych przez pacjentki z zespołem MRKH. Do tej pory najbardziej znane
+    precedensy to te z 2014 i 2017 roku, kiedy kolejno w Szwecji i Brazylii
+    pacjentki z zespołem MRKH urodziły żywe dzieci — w pierwszym przypadku z
+    macicy przeszczepionej od żyjącej dawczyni, w drugim od zmarłej. Macica nie
+    jest narządem niezbędnym do życia i przeszczepia się ją tylko i wyłącznie na
+    potrzeby jednej ciąży (po porodzie zostaje ona usunięta). Choć operacja jest
+    bardzo skomplikowana i obciążająca zarówno dla dawczyni, jak i dla
+    biorczyni, jest możliwa.`,
+    pestka2: `Drugą możliwością jest surogacja, która polega na zapłodnieniu
+    pozamacicznym z transferem zarodka do matki zastępczej (przyp. red.
+    surogatki). W ten sposób pacjentka z zespołem MRKH może być genetycznym
+    rodzicem, ponieważ z punktu widzenia jajnikowego osoby z zespołem MRKH są
+    płodne.`,
+    pestka3: `Trzecią (i obecnie jedyną dostępną w Polsce z punktu prawnego)
+    możliwością jest adopcja, jednak w celu rozpoczęcia procedury adopcyjnej
+    należy być w co najmniej czteroletnim związku małżeńskim.`,
+    pestka3_2: `Warto podkreślić, że są osoby, które realizują potrzebę
+    rodzicielstwa w inny sposób, np. związując się z osobą, która ma
+    dziecko/dzieci, angażując się jako opiekunka, bliska przyjaciółka rodziny
+    itd.`
 }
 
 type T = keyof typeof plTrans;
 
 const all: Record<Lang, Record<T, string>> = {
     "pl": plTrans,
+    fr: {
+        header: `Relations et maternité`,
+        p1: `La période de puberté chez les personnes qui ont le MRKH (jusqu'au
+        moment du diagnostic) se déroule de la même manière que chez des
+        personnes « avec pépins », de sorte que les bezpestkowe prennent des
+        rôles de genre féminin (en raison de leur apparence physique, et non du
+        syndrome MRKH).`,
+        p2: `Chaque personne, qu'elle ait ou non une « graine », est construite
+        différemment - nos corps, leur apparence et leur fonctionnalité
+        diffèrent les uns des autres. Si tu crains que ton.ta partenaire
+        sexuel.le reconnaisse que ton vagin est le fruit d’une opération, nous
+        t’assurons <span class="bold">qu'il n'y a pas lieu de s'inquiéter</span> - d'un point de vue
+        profane, <span class="bold">nous sommes incapables de reconnaître</span> si nous avons un contact
+        sexuel avec une personne qui est née avec un vagin ou une personne qui a
+        un néo-vagin. Une autre conséquence associée au fait d'être bezpestkowe
+        est l'impossibilité de tomber enceinte et d'accoucher d’un enfant. En
+        général, lorsque le syndrome MRKH est diagnostiqué, cette information
+        est plus difficile à accepter pour les parents/tuteurs des personnes
+        bezpestkowe que pour elles-mêmes. Bien entendu, <span class="bold">le fait d’avoir le
+        syndrome MRKH n'exclut pas la possibilité de devenir parent</span> (si c'est
+        quelque chose que l’on souhaite). Il existe différentes façons de
+        procéder :`,
+        p3: ``,
+        pestka1: `La première option est la <span class="bold">transplantation utérine</span> (greffe
+        d’utérus), qui est encore considérée comme un traitement expérimental et
+        qui, pour des raisons anatomiques, ne peut pas être réalisée chez toutes
+        les patientes qui ont le syndrome MRKH. Actuellement, il y a plus de dix
+        enfants nés de patientes MRKH dans le monde. À ce jour, les événements
+        les plus connus sont ceux de 2014 et 2017, lorsque, en Suède et au
+        Brésil, des patientes qui ont le syndrome MRKH ont donné naissance à des
+        bébés vivants - dans le premier cas à partir d'un utérus transplanté à
+        partir d'une donneuse vivante, dans le second à partir d'une donneuse
+        décédée. L'utérus n'est pas un organe vital et n'est transplanté que
+        pour une grossesse (il est retiré après l'accouchement). Bien que
+        l'opération soit très compliquée et contraignante pour la donneuse et la
+        receveuse, elle est possible.`,
+        pestka2: `La deuxième option est la <span class="bold">gestation pour autrui (GPA)</span>, qui
+        consiste en l’implantation d’un embryon à une mère porteuse. Ainsi, une
+        patiente avec le syndrome MRKH peut être un parent biologique, car d’un
+        point de vue du cycle ovarien elle est fertile.`,
+        pestka3: `Une troisième option (et actuellement la seule disponible en
+        Pologne d'un point de vue juridique) est <span class="bold">l'adoption</span>. Il faut cependant
+        être marié depuis au moins quatre ans pour pouvoir entamer la procédure
+        d'adoption.`,
+        pestka3_2: `Il convient de noter que certaines personnes réalisent le
+        besoin de parentalité par d’autres moyens, par exemple en nouant des
+        liens avec quelqu'un qui a un ou des enfants, en s'impliquant en tant
+        que nounou ou amie proche de la famille, etc.`,
+    },
     "en": {
         header: 'Relationships and parenthood',
         p1: `MRKH puberty (up to the point of diagnosis) follows the same patterns as a cis women’s puberty, so Bezpestkowe usually 
@@ -147,20 +216,20 @@ const trans = all[lang];
                     <Pestka Parent='div' width={60} alt="Pestka-1">
                         <span>1</span>
                     </Pestka>
-                    <p>{trans.pestka1}</p>
+                    <p set:html={trans.pestka1} />
                 </div>
                 <div class="pestka">
                     <Pestka Parent='div' width={60} alt="Pestka-2">
                         <span>2</span>
                     </Pestka>
-                    <p>{trans.pestka2}</p>
+                    <p set:html={trans.pestka2} />
                 </div>
                 <div class="pestka">
                     <Pestka Parent='div' width={60} alt="Pestka-3">
                         <span>3</span>
                     </Pestka>
-                    <p>{trans.pestka3}</p>
-                    <p>{trans.pestka3_2}</p>
+                    <p set:html={trans.pestka3} />
+                    <p set:html={trans.pestka3_2} />
                 </div>
             </div>
         </section>

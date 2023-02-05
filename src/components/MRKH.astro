@@ -86,6 +86,68 @@ const plTrans = {
 type T = keyof typeof plTrans;
 
 const temp: Record<Lang, Record<T, string>> = {
+    fr: {
+        p1: `Le syndrome MRKH est une aplasie (défaut de formation d'un organe)
+        ou une hypoplasie (sous-développement important) de l'utérus et du vagin
+        chez une personne dont le phénotype est (le phénotype est l'aspect le
+        plus général) féminin avec un caryotype 46.XX. Il appartient au groupe
+        des maladies rares, car selon les statistiques, il concerne environ 1
+        nouveau-né de sexe féminin né vivant sur 4 000 à 1 sur 10 000 (le plus
+        souvent, la moyenne est de 1 nouveau-né de sexe féminin sur 4500). En
+        Pologne, environ 4400 personnes ont le syndrome MRKH, et environ 40
+        bezpestkowe naissent chaque année.`,
+        p2: `Le syndrome MRKH se présente différemment chez chaque personne.
+        Cela va de l'absence totale de l'utérus, à des trompes utérines
+        inactives résiduelles, en passant par des trompes utérines résiduelles
+        avec une cavité utérine partielle avec endomètre. De même, dans le cas
+        du vagin, il peut être complètement absent ou présent sous une forme
+        partielle, qui, chez certaines bezpestkowe, est suffisamment grand pour
+        devenir un vagin « pleinement fonctionnel » sans intervention médicale
+        lors des tentatives de rapport sexuel pénétrant.`,
+        p3: `Le syndrome de MRKH est une anomalie complexe - en médecine, toute
+        affection appelée syndrome est constituée de nombreux signes. Les
+        anomalies de l'utérus et du vagin peuvent donc s'accompagner d'anomalies
+        d'autres organes. Les deux systèmes les plus fréquemment touchés sont le
+        système urinaire et le système squelettique ; dans certains cas, des
+        anomalies du cœur et des gros vaisseaux apparaissent également, et
+        certaines patientes présentent une baisse de l'audition.`,
+        p4: `Nous distinguons ainsi deux types du syndrome MRKH : le premier est
+        diagnostiqué lorsque l'anomalie est limitée au système reproducteur,
+        c'est-à-dire à l'utérus et au vagin, le second lorsque d'autres
+        anomalies coexistent, par exemple l'absence congénitale d'un rein et/ou
+        des anomalies de la colonne vertébrale. `,
+        p5: `L’absence des règles chez les bezpestkowe n’est pas synonyme de
+        l'absence du cycle menstruel. Les personnes avec le syndrome MRKH ont
+        des ovaires qui fonctionnent, sécrètent des hormones et produisent des
+        ovules, de sorte que les bezpestkowe ovulent et, d’un point de vue
+        hormonal, passent par toutes les étapes du cycle menstruel. La seule
+        différence est l'absence de saignements, bien qu'il puisse y avoir des «
+        micro-menstruations » en cas de présence d'un endomètre résiduel. Une
+        bezpestkowa passera également par la ménopause et pourra connaître les
+        nombreux désagréments qui y sont associée.`,
+        p6: `Être bezpestkowa n’empêche pas d’avoir des rapports sexuels. Chaque
+        personne définit le sexe à sa manière, la pénétration n’étant pas la
+        plus importante. Cependant, si tu choisis d'avoir des rapports sexuels
+        avec pénétration, il existe trois façons de façonner/d’agrandir un
+        vagin. N’oublie pas de consulter ton médecin avant de commencer la
+        démarche choisie. Quelle que soit l’option que tu privilégie, souviens
+        toi, qu’un sexe réussi et satisfaisant est possible. Sa qualité ne
+        dépend pas de la taille de ton vagin de 4 ou 7 cm, mais de la personne
+        avec laquelle tu choisis d’avoir des rapports sexuels.`,
+        p7: `La première possibilité est l'étirement du vagin avec un.e
+        partenaire. Si tu as quelqu'un avec qui tu te sens suffisamment à l'aise
+        pour le faire (dans une atmosphère de tendresse et de confiance
+        mutuelle), envisage cette option. Elle peut te donner beaucoup de
+        plaisir.`, 
+        p8: `La seconde est l'allongement non-chirurgical du vagin à
+        l'aide de dilatateurs. Il s'agit d'un étirement progressif et régulier
+        de la cavité vaginale existante. Cette option demande de la patience et
+        de la détermination, mais elle est très gratifiante. Tu peux adapter les
+        exercices en fonction de tes besoins. N'oublie pas que tu fais cela pour
+        toi-même, et que tu dois donc apprécier l'ensemble du processus.`, 
+        p9: `La troisième option est l’intervention chirurgicale.`,
+        header: `Qu'est-ce que le syndrome MRKH et en quoi consiste-t-il ?`
+    },
     "pl": plTrans,
     "en": {
         header: `
@@ -230,7 +292,10 @@ const temp: Record<Lang, Record<T, string>> = {
         p9: `
         Третій варіант - операційне втручання.
         `
+
+
     },
+   
 }
 
 const {lang} = Astro.props;
