@@ -10,7 +10,7 @@ const {currentLang} = Astro.props;
 const langsTwice = allowed.concat(allowed)
 const ind = allowed.findIndex(l => l === currentLang);
 
-const langs = [langsTwice[ind], langsTwice[ind + 1], langsTwice[ind + 2]];
+const langs = [langsTwice[ind], langsTwice[ind + 1], langsTwice[ind + 2], langsTwice[ind + 3]];
 
 ---
 
@@ -46,8 +46,8 @@ const langs = [langsTwice[ind], langsTwice[ind + 1], langsTwice[ind + 2]];
         transition-timing-function: ease-out;
         display: flex;
         position: absolute;
-        right: calc(-2 * var(--header-h));
-        width: calc(3 * var(--header-h));
+        right: calc(-3 * var(--header-h));
+        width: calc(4 * var(--header-h));
         height: 100%;
     }
     .lang-slider.open {
