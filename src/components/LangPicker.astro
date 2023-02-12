@@ -69,6 +69,16 @@ const langs = [langsTwice[ind], langsTwice[ind + 1], langsTwice[ind + 2], langsT
             border-left: none;
         }
     }
+    @media(max-width: 400px) {
+        .lang-slider {
+            right: calc(-2 * 100px);
+            width: calc(3 * 90px);
+        }
+        img {
+            width: 60px;
+            width: 60px;
+        }
+    }
 </style>
 
 <div data-slider data-current-lang={currentLang} class="lang-slider">
