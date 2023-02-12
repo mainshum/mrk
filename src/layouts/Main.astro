@@ -1,4 +1,8 @@
 ---
+import Pestka from "src/components/Pestka.astro";
+import {Image} from '@astrojs/image/components';
+import arrow from '@images/arrow.svg';
+
 
 ---
 <style is:global>
@@ -43,6 +47,7 @@
     }
     body {
         overflow-x: hidden;
+        position: relative;
     }
     body > div:first-child header .right{
         border-left: none;
@@ -73,6 +78,21 @@
         width: 40%;
         height: auto;
     }
+    .up {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        position: fixed;
+        bottom: 22px;
+        right: 22px;
+        z-index: 2;
+    }
+    .up.visible {
+        opacity: 1;
+    }
+    .arrow {
+        width: 20px;
+        height: 15px;
+    }
 
 </style>
 
@@ -86,5 +106,55 @@
 	</head>
 	<body>
 		<slot />
+        <div data-up class="up">
+            <Pestka alt="up-cont" isOrange={true} width={50} Parent="button">
+                <Image class="arrow" alt="up" src={arrow} width={30} height={30} />
+            </Pestka>
+        </div>
 	</body>
 </html>
+
+<script>
+
+    const controlScroll = (el: Element) => {
+        const TIME_VISIBLE = 1300;
+        const SHOW_FROM_TOP_PX = 1000;
+
+        let timeout: undefined | number; 
+
+        const runTimeout = () => {
+            el.classList.remove('visible');
+            clearTimeout(timeout);
+            timeout = undefined;
+        }
+
+        return () => {
+            const currentScroll = window.scrollY;
+
+            if (currentScroll < SHOW_FROM_TOP_PX)
+                return;
+
+            // its already visible
+            if (timeout) {
+                clearTimeout(timeout);
+                timeout = setTimeout(runTimeout, TIME_VISIBLE)
+                return;
+            } 
+
+            el.classList.add('visible');
+
+            timeout = setTimeout(runTimeout, TIME_VISIBLE);
+        }
+    };
+
+    (function dataUp() {
+        const up = document.querySelector('[data-up]');
+
+        if (!up) return;
+
+        document.addEventListener('scroll', controlScroll(up));
+
+        up.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+    })()
+
+</script>
