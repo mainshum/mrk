@@ -1,8 +1,6 @@
 ---
 import Pestka from "src/components/Pestka.astro";
-import {Image} from '@astrojs/image/components';
 import arrow from '@images/arrow.svg';
-
 
 ---
 <style is:global>
@@ -108,7 +106,7 @@ import arrow from '@images/arrow.svg';
 		<slot />
         <div data-up class="up">
             <Pestka alt="up-cont" isOrange={true} width={50} Parent="button">
-                <Image class="arrow" alt="up" src={arrow} width={30} height={30} />
+                <img class="arrow" width="20px" height="15px" src={arrow} alt="up">
             </Pestka>
         </div>
 	</body>
