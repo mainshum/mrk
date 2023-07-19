@@ -124,6 +124,7 @@ const rr = rest[lang];
 <style>
   .info {
     font-size: var(--font-small);
+    padding-bottom: 0px;
   }
   .links {
     position: relative;
@@ -138,6 +139,7 @@ const rr = rest[lang];
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
   }
   .girl {
     position: relative;
@@ -183,22 +185,22 @@ const rr = rest[lang];
       display: none;
     }
   }
-  .sponsors_wrapper {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column-reverse;
-  }
   .sponsors {
     display: flex;
     align-items: center;
+    position: relative;
+    right: 25px;
   }
   @media (max-width: 750px) {
     .sponsors {
-      flex-direction: column;
+      right: 0px;
+      justify-content: space-evenly;
     }
-    .sponsors img:last-child {
-      position: relative;
-      left: 15px;
+  }
+  @media (max-width: 500px) {
+    .sponsors img {
+      width: 40%;
+      height: auto;
     }
   }
 </style>
@@ -297,12 +299,12 @@ const rr = rest[lang];
           <span class="safari-fix">521286817</span>
         </div>
       </section>
-      <section class="sponsors_wrapper">
-        <div class="sponsors">
-          <Image format="webp" height={150} src={vox} alt="logo vox" />
-          <Image format="webp" height={150} src={femfund} alt="logo femfund" />
-        </div>
+      <section>
         <div>Organizacje partnerskie i wspierające nasze działania:</div>
+        <div class="sponsors">
+          <Image format="webp" width={180} src={vox} alt="logo vox" />
+          <Image format="webp" width={180} src={femfund} alt="logo femfund" />
+        </div>
       </section>
     </div>
     <Image
