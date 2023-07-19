@@ -1,275 +1,317 @@
 ---
 interface Props {
-    lang: Lang
+  lang: Lang;
 }
 
 import Page from "./Page.astro";
 import PageTitle from "./PageTitle.astro";
 import Header from "../layouts/Header.astro";
 import type { Lang } from "../types";
-import {Image} from '@astrojs/image/components';
-import girl from '@images/girl.png';
-import Pestka from './Pestka.astro';
+import { Image } from "@astrojs/image/components";
+import girl from "@images/girl.png";
+import vox from "@images/sponsorzy/vox.png";
+import femfund from "@images/sponsorzy/femfund.png";
+import Pestka from "./Pestka.astro";
 
-const {lang} = Astro.props;
+const { lang } = Astro.props;
 
 const people: Record<Lang, [string, string][]> = {
-    'fr': [
-        ['Zuzanna Piontke', 'fondatrice du projet Bezpestkowe'],
-        ['Agata Śmiałkowska', 'coordinatrice du projet Bezpestkowe'],
-        ['Mikołaj Hałabuda', 'conception des brochures'],
-        ['Zofka Kofta', 'conception de la page web'],
-        ['Kozlow', 'illustrations'],
-        ['Paulina Puchalska', 'rédaction et correction des textes'],
-        ['Magda Domagała', 'traduction des textes en anglais'],
-        ['Czarek Polak', 'web development'],
-        ['Aleksander Przeszło', 'web development'],
-        ['Maria Zdulska', 'comptabilité'],
-    ],
-    'pl': [
-        ['Zuzanna Piontke', 'założycielka projektu Bezpestkowe'],
-        ['Agata Śmiałkowska', 'współkoordynatorka projektu Bezpestkowe'],
-        ['Mikołaj Hałabuda', 'projekt broszur'],
-        ['Zofka Kofta', 'projekt strony internetow'],
-        ['Kozlow', 'ilustracje'],
-        ['Paulina Puchalska', 'redakcja i korekty tekstów'],
-        ['Magda Domagała', 'przekład tekstów na język angielski'],
-        ['Czarek Polak', 'web development'],
-        ['Aleksander Przeszło', 'web development'],
-        ['Maria Zdulska', 'rachunkowość i księgowość'],
-    ],
-    'en': [
-        ['Zuzanna Piontke', 'Bezpestkowe founder '],
-        ['Agata Śmiałkowska', 'Bezpestkowe co-coordinator'],
-        ['Mikołaj Hałabuda', 'booklets'],
-        ['Zofka Kofta', 'web design'],
-        ['Kozlow', 'images and iconographics'],
-        ['Paulina Puchalska', 'text and correction'],
-        ['Magda Domagała', 'english translations'],
-        ['Czarek Polak', 'web development '],
-        ['Aleksander Przeszło', 'web development'],
-        ['Maria Zdulska', 'bookkeeping and accounting'],
-    ],
-    'ua': [
-        ['Зузанна Піонтке', 'засновниця проекту Безнасінні'],
-        ['Агата Шмялковська', 'співкоординаторка проекту Безнасінні'],
-        ['Міколай Халабуда', 'дизайн брошур'],
-        ['Зофка Кофта', 'дизайн сайту'],
-        ['Козлов', ' ілюстрації'],
-        ['Пауліна Пухальська', 'редагування та вичитка текстів'],
-        ['Магда Домагала', 'переклад текстів англійською мовою'],
-        ['Чарек Полак', 'веб-розробка'],
-        ['Олександр Пшесло', 'веб-розробка'],
-        ['Марія Здульська', ' бухгалтерія'],
-    ],
-}
+  fr: [
+    ["Zuzanna Piontke", "fondatrice du projet Bezpestkowe"],
+    ["Agata Śmiałkowska", "coordinatrice du projet Bezpestkowe"],
+    ["Mikołaj Hałabuda", "conception des brochures"],
+    ["Zofka Kofta", "conception de la page web"],
+    ["Kozlow", "illustrations"],
+    ["Paulina Puchalska", "rédaction et correction des textes"],
+    ["Magda Domagała", "traduction des textes en anglais"],
+    ["Czarek Polak", "web development"],
+    ["Aleksander Przeszło", "web development"],
+    ["Maria Zdulska", "comptabilité"],
+  ],
+  pl: [
+    ["Zuzanna Piontke", "założycielka projektu Bezpestkowe"],
+    ["Agata Śmiałkowska", "współkoordynatorka projektu Bezpestkowe"],
+    ["Mikołaj Hałabuda", "projekt broszur"],
+    ["Zofka Kofta", "projekt strony internetowej"],
+    ["Kozlow", "ilustracje"],
+    ["Paulina Puchalska", "redakcja i korekty tekstów"],
+    ["Magda Domagała", "przekład tekstów na język angielski"],
+    ["Czarek Polak", "web development"],
+    ["Aleksander Przeszło", "web development"],
+    ["Maria Zdulska", "rachunkowość i księgowość"],
+  ],
+  en: [
+    ["Zuzanna Piontke", "Bezpestkowe founder "],
+    ["Agata Śmiałkowska", "Bezpestkowe co-coordinator"],
+    ["Mikołaj Hałabuda", "booklets"],
+    ["Zofka Kofta", "web design"],
+    ["Kozlow", "images and iconographics"],
+    ["Paulina Puchalska", "text and correction"],
+    ["Magda Domagała", "english translations"],
+    ["Czarek Polak", "web development "],
+    ["Aleksander Przeszło", "web development"],
+    ["Maria Zdulska", "bookkeeping and accounting"],
+  ],
+  ua: [
+    ["Зузанна Піонтке", "засновниця проекту Безнасінні"],
+    ["Агата Шмялковська", "співкоординаторка проекту Безнасінні"],
+    ["Міколай Халабуда", "дизайн брошур"],
+    ["Зофка Кофта", "дизайн сайту"],
+    ["Козлов", " ілюстрації"],
+    ["Пауліна Пухальська", "редагування та вичитка текстів"],
+    ["Магда Домагала", "переклад текстів англійською мовою"],
+    ["Чарек Полак", "веб-розробка"],
+    ["Олександр Пшесло", "веб-розробка"],
+    ["Марія Здульська", " бухгалтерія"],
+  ],
+};
 
 const plTrans = {
-    header: 'Kontakt',
-    phone: 'Telefon',
-    email: 'E-mail',
-    fb: 'Grupa dla osób Bezpestkowych',
-    fbSupport: 'Grupa dla osób wspierających osoby Bezpestkowe',
-    patronite: 'Wesprzyj nas na Patronite.pl',
-    teamHeader: 'Zespół:',
-    coop: 'Współpraca:',
-    daneFund: 'Dane fundacji',
+  header: "Kontakt",
+  phone: "Telefon",
+  email: "E-mail",
+  fb: "Grupa dla osób Bezpestkowych",
+  fbSupport: "Grupa dla osób wspierających osoby Bezpestkowe",
+  patronite: "Wesprzyj nas na Patronite.pl",
+  teamHeader: "Zespół:",
+  coop: "Współpraca:",
+  daneFund: "Dane fundacji",
 } as const;
 
 type T = keyof typeof plTrans;
 
 const rest: Record<Lang, Record<T, string>> = {
-    "pl": plTrans,
-    "fr": {
-        header: "Contact:",
-        phone: `Téléphone`,
-        email: `Email`,
-        fb: `Groupe pour les personnes Bezpestkowe`,
-        fbSupport: `Groupe pour les personnes qui soutiennent les personnes Bezpestkowe`,
-        patronite: `Soutenez-nous sur Patronite.pl`,
-        coop: `Soutènement: `,
-        daneFund: `À propos de nous`,
-        teamHeader: `L’équipe:`
-    },
-    "en": {
-        header: 'Contact information',
-        phone: 'Phone',
-        email: 'E-mail',
-        daneFund: 'About us',
-        fb: 'Bezpestkowe group',
-        fbSupport: 'Bezpestkowe support group',
-        patronite: 'Support us at Patronite.pl',
-        teamHeader: 'Our team',
-        coop: 'Support',
-    },
-    "ua": {
-        header: 'Контактна інформація',
-        phone: 'телефон',
-        email: 'Е-пошта',
-        daneFund: 'Про нас',
-        coop: 'Дані фонду',
-        fb: 'Bezpestkowe група',
-        fbSupport: 'Bezpestkowe група підтримки',
-        patronite: 'Підтримай нас на Patronite.pl',
-        teamHeader: 'Колектив'
-    },
+  pl: plTrans,
+  fr: {
+    header: "Contact:",
+    phone: `Téléphone`,
+    email: `Email`,
+    fb: `Groupe pour les personnes Bezpestkowe`,
+    fbSupport: `Groupe pour les personnes qui soutiennent les personnes Bezpestkowe`,
+    patronite: `Soutenez-nous sur Patronite.pl`,
+    coop: `Soutènement: `,
+    daneFund: `À propos de nous`,
+    teamHeader: `L’équipe:`,
+  },
+  en: {
+    header: "Contact information",
+    phone: "Phone",
+    email: "E-mail",
+    daneFund: "About us",
+    fb: "Bezpestkowe group",
+    fbSupport: "Bezpestkowe support group",
+    patronite: "Support us at Patronite.pl",
+    teamHeader: "Our team",
+    coop: "Support",
+  },
+  ua: {
+    header: "Контактна інформація",
+    phone: "телефон",
+    email: "Е-пошта",
+    daneFund: "Про нас",
+    coop: "Дані фонду",
+    fb: "Bezpestkowe група",
+    fbSupport: "Bezpestkowe група підтримки",
+    patronite: "Підтримай нас на Patronite.pl",
+    teamHeader: "Колектив",
+  },
 };
 
 const pp = people[lang];
 const rr = rest[lang];
-
 ---
+
 <style>
-    .info {
-        font-size: var(--font-small);
+  .info {
+    font-size: var(--font-small);
+  }
+  .links {
+    position: relative;
+    right: 6px;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .girl {
+    position: relative;
+    top: 115px;
+    left: 20px;
+    width: 672px;
+    height: auto;
+    align-self: flex-end;
+  }
+  .statut {
+    font-size: var(--font-mini);
+    position: relative;
+    bottom: 4px;
+  }
+  .icon-download {
+    position: relative;
+    bottom: 1px;
+  }
+  a {
+    color: currentColor;
+  }
+  .safari-fix {
+    text-decoration: none;
+    color: var(--primary-color);
+  }
+  @media (max-width: 1100px) {
+    .girl {
+      width: 504px;
     }
-    .links {
-        position: relative;
-        right: 6px;
+  }
+  @media (max-width: 950px) {
+    .girl {
+      width: 378px;
     }
+  }
+  @media (max-width: 750px) {
     .wrapper {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-    }
-    .wrapper section:not(:first-child) {
-        padding-top: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 40px;
     }
     .girl {
-        position: relative;
-        top: 115px;
-        left: 20px;
-        width: 672px;
-        height: auto;
-        align-self: flex-end;
+      display: none;
     }
-    .statut {
-        font-size: var(--font-mini);
-        position: relative;
-        bottom: 4px;
+  }
+  .sponsors_wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .sponsors {
+    display: flex;
+    align-items: center;
+  }
+  @media (max-width: 750px) {
+    .sponsors {
+      flex-direction: column;
     }
-    .icon-download {
-        position: relative;
-        bottom: 1px;
+    .sponsors img:last-child {
+      position: relative;
+      left: 15px;
     }
-    a {
-        color: currentColor;
-    }
-    .safari-fix {
-        text-decoration: none;
-        color: var(--primary-color);
-    }
-    @media(max-width: 1100px) {
-        .girl {
-            width: 504px;
-        }
-
-    }
-    @media(max-width: 950px) {
-        .girl {
-            width: 378px;
-        }
-
-    }
-    @media(max-width: 750px) {
-        .wrapper {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 40px;
-        }
-        .girl {
-            display: none;
-        }
-    }
+  }
 </style>
 <Page color="white">
-    <Header slot="header">
-        <PageTitle slot="lhs" title={rr.header}/>
-        <Pestka Parent='button' isOrange={true} slot='rhs' alt="Pobierz pdf" width={75}>
-            <a class='pestka' href="/bezpestkowe_statut.pdf" download="Statut.pdf">
-                <div class="icon-download"></div>
-                <div class='statut'>Statut</div>
-            </a>
-        </Pestka>
-    </Header>
-    <div class="info wrapper pad-body" slot="body">
+  <Header slot="header">
+    <PageTitle slot="lhs" title={rr.header} />
+    <Pestka
+      Parent="button"
+      isOrange={true}
+      slot="rhs"
+      alt="Pobierz pdf"
+      width={75}
+    >
+      <a class="pestka" href="/bezpestkowe_statut.pdf" download="Statut.pdf">
+        <div class="icon-download"></div>
+        <div class="statut">Statut</div>
+      </a>
+    </Pestka>
+  </Header>
+  <div class="info wrapper pad-body" slot="body">
+    <div class="sections">
+      <section class="info">
         <div>
-            <section class="info">
-                <div>
-                    <span>{rr.phone}</span>
-                    <span class="safari-fix">+48 792 858 688</span>
-                </div>
-                <div>
-                    <span>{rr.email}</span>
-                    <a href="mailto: bezpestkowe@gmail.com">
-                        <span>bezpestkowe@gmail.com</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="https://patronite.pl/bezpestkowe">
-                        <span>{rr.patronite}</span>
-                    </a>
-                </div>
-            </section>
-            <section class="links">
-                <div>
-                    <a href="https://www.instagram.com/bezpestkowe/">
-                        <span class='icon-instagram'>@bezpestkowe</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="https://www.facebook.com/groups/2273363222909730/">
-                        <span class="icon-facebook">{rr.fb}</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="https://www.facebook.com/groups/537097924503318/">
-                        <span class="icon-facebook">{rr.fbSupport}</span>
-                    </a>
-                </div>
-            </section>
-            <section class="leads">
-                <div>{rr.teamHeader}</div>
-                <div>
-                    <span>{pp[0][0]}</span>
-                    <span>-</span>
-                    <span>{pp[0][1]}</span>
-                </div>
-                <div>
-                    <span>{pp[1][0]}</span>
-                    <span>-</span>
-                    <span>{pp[1][1]}</span>
-                </div>
-            </section>
-            <section class="other">
-                <div>{rr.coop}</div>
-                {pp.slice(3, pp.length).map(([name, pos]) => (
-                    <div>
-                        <span>{name}</span>
-                        <span>-</span>
-                        <span>{pos}</span>
-                    </div>
-                ))}
-            </section>
-            <section class="krs">
-                <div>{rr.daneFund}</div>
-                <div>
-                    <span>KRS</span>
-                    <span>-</span>
-                    <span class='safari-fix'>0000951776</span>
-                </div>
-                <div>
-                    <span>NIP</span>
-                    <span>-</span>
-                    <span class='safari-fix'>5862377596</span>
-                </div>
-                <div>
-                    <span>REGON</span>
-                    <span>-</span>
-                    <span class='safari-fix'>521286817</span>
-                </div>
-            </section>
+          <span>{rr.phone}</span>
+          <span class="safari-fix">+48 792 858 688</span>
         </div>
-        <Image format='webp' width={672} height={867} class="girl" src={girl} alt="dziewczyna" />
+        <div>
+          <span>{rr.email}</span>
+          <a href="mailto: bezpestkowe@gmail.com">
+            <span>bezpestkowe@gmail.com</span>
+          </a>
+        </div>
+        <div>
+          <a href="https://patronite.pl/bezpestkowe">
+            <span>{rr.patronite}</span>
+          </a>
+        </div>
+      </section>
+      <section class="links">
+        <div>
+          <a href="https://www.instagram.com/bezpestkowe/">
+            <span class="icon-instagram">@bezpestkowe</span>
+          </a>
+        </div>
+        <div>
+          <a href="https://www.facebook.com/groups/2273363222909730/">
+            <span class="icon-facebook">{rr.fb}</span>
+          </a>
+        </div>
+        <div>
+          <a href="https://www.facebook.com/groups/537097924503318/">
+            <span class="icon-facebook">{rr.fbSupport}</span>
+          </a>
+        </div>
+      </section>
+      <section class="leads">
+        <div>{rr.teamHeader}</div>
+        <div>
+          <span>{pp[0][0]}</span>
+          <span>-</span>
+          <span>{pp[0][1]}</span>
+        </div>
+        <div>
+          <span>{pp[1][0]}</span>
+          <span>-</span>
+          <span>{pp[1][1]}</span>
+        </div>
+      </section>
+      <section class="other">
+        <div>{rr.coop}</div>
+        {
+          pp.slice(3, pp.length).map(([name, pos]) => (
+            <div>
+              <span>{name}</span>
+              <span>-</span>
+              <span>{pos}</span>
+            </div>
+          ))
+        }
+      </section>
+      <section class="krs">
+        <div>{rr.daneFund}</div>
+        <div>
+          <span>KRS</span>
+          <span>-</span>
+          <span class="safari-fix">0000951776</span>
+        </div>
+        <div>
+          <span>NIP</span>
+          <span>-</span>
+          <span class="safari-fix">5862377596</span>
+        </div>
+        <div>
+          <span>REGON</span>
+          <span>-</span>
+          <span class="safari-fix">521286817</span>
+        </div>
+      </section>
+      <section class="sponsors_wrapper">
+        <div class="sponsors">
+          <Image format="webp" height={150} src={vox} alt="logo vox" />
+          <Image format="webp" height={150} src={femfund} alt="logo femfund" />
+        </div>
+        <div>Organizacje partnerskie i wspierające nasze działania:</div>
+      </section>
     </div>
+    <Image
+      format="webp"
+      width={672}
+      height={867}
+      class="girl"
+      src={girl}
+      alt="dziewczyna"
+    />
+  </div>
 </Page>

@@ -48,6 +48,8 @@ const nonEmptySpecs = (s: Specialization) => s.drs.length > 0;
 const specializations: Specialization[] = specs
   .reduce(withDoctors, [])
   .filter(nonEmptySpecs);
+
+console.log(`Found specs:`, JSON.stringify(specializations, null, 2));
 ---
 
 <style>
