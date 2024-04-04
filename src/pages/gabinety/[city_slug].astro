@@ -21,6 +21,9 @@ const reduceSpec = (drs: Doctor[]) => (acc: Specialization[], cv: Spec) =>
 export async function getStaticPaths() {
   const client = new PrismaClient();
   const ac = await client.city.findMany({});
+
+  await client.$disconnect();
+
   return ac.map(({ id, name, slug }) => ({ params: { city_slug: slug } }));
 }
 
@@ -39,6 +42,7 @@ const drsPr = client.doctor.findMany({
   where: { city_id: mCity.id },
 });
 
+
 const [specs, drs] = await Promise.all([specsPr, drsPr]);
 
 const withDoctors = reduceSpec(drs);
@@ -50,6 +54,8 @@ const specializations: Specialization[] = specs
   .filter(nonEmptySpecs);
 
 console.log(`Found specs:`, JSON.stringify(specializations, null, 2));
+
+await client.$disconnect();
 ---
 
 <style>
@@ -91,8 +97,9 @@ console.log(`Found specs:`, JSON.stringify(specializations, null, 2));
                         <ul class="traits">
                           <li>{d.room}</li>
                           {d.name && <li>{d.name}</li>}
-                          <li>{d.address}</li>
-                          <li>{d.phone}</li>
+                          {d.address && <li>{d.address}</li>}
+                          {d.phone && <li>{d.phone}</li>}
+                          {d.url && <li>{d.url}</li>}
                         </ul>
                     ))}
                 </div>
