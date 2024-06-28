@@ -13,16 +13,17 @@
 
 <style>
   h1 {
-    font-size: 3.5rem;
+    font-size: 3.5em;
     font-weight: bold;
     color: #f6892a;
   }
   p {
-    font-size: 2.5rem;
+    font-size: 2.5em;
     color: rgb(102, 20, 181);
   }
   a {
-    font-size: 2.5rem;
+    font-size: 2em;
+    text-align: center;
     color: #f6892a;
     background-color: rgb(102, 20, 181);
     padding: 4px 40px;
@@ -34,17 +35,33 @@
     display: flex;
   }
   dialog {
-    padding: 48px 96px;
+    font-size: 0.7rem;
+    padding: 24px 48px;
     transform: translateY(100px);
     flex-direction: column;
     border-radius: 8px;
-    gap: 23px;
+    gap: 24px;
     width: 1120px;
     margin: 0 auto;
     border-left: none;
     border-right: none;
     border-top: 10px solid #f6892a;
     border-bottom: 10px solid #f6892a;
+  }
+  @media (min-width: 480px) {
+    a {
+      font-size: 2.5em;
+    }
+  }
+  @media (min-width: 600px) {
+    dialog {
+      font-size: 1rem;
+    }
+  }
+  @media (min-width: 700px) {
+    dialog {
+      padding: 48px 96px;
+    }
   }
   dialog::backdrop {
     background: rgb(208, 166, 244);
@@ -57,5 +74,5 @@
 
   setTimeout(() => {
     dialog?.showModal();
-  }, 1000);
+  }, 3000);
 </script>
