@@ -52,7 +52,7 @@
   }
   dialog {
     overflow: visible;
-    position: relative;
+    position: fixed;
     font-size: 0.7rem;
     padding: 24px 48px;
     transform: translateY(99px);
@@ -92,14 +92,30 @@
 </style>
 
 <script>
+  const ONE_DAY = 1000 * 60 * 60 * 24;
+  const TIME_NOW = new Date().getTime();
+
   const dialog = document.querySelector("dialog");
   const close = document.querySelector("dialog button");
+  const link = document.querySelector("dialog a");
+  const POPUP_NEXT_SHOW = "popup_next_show";
 
-  setTimeout(() => {
-    dialog?.showModal();
-  }, 2000);
+  const showPopup = () => {
+    setTimeout(() => dialog?.showModal(), 3000);
 
-  close?.addEventListener("click", () => {
-    dialog?.close();
-  });
+    link?.addEventListener("click", () =>
+      localStorage.setItem(POPUP_NEXT_SHOW, Number.MAX_SAFE_INTEGER.toString())
+    );
+
+    close?.addEventListener("click", () => {
+      localStorage.setItem(POPUP_NEXT_SHOW, (TIME_NOW + ONE_DAY).toString());
+      dialog?.close();
+    });
+  };
+
+  const popupState = localStorage.getItem(POPUP_NEXT_SHOW);
+
+  if (!popupState || parseInt(popupState) < TIME_NOW) {
+    showPopup();
+  }
 </script>
