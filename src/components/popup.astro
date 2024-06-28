@@ -103,9 +103,10 @@
   const showPopup = () => {
     setTimeout(() => dialog?.showModal(), 3000);
 
-    link?.addEventListener("click", () =>
-      localStorage.setItem(POPUP_NEXT_SHOW, Number.MAX_SAFE_INTEGER.toString())
-    );
+    link?.addEventListener("click", () => {
+      localStorage.setItem(POPUP_NEXT_SHOW, Number.MAX_SAFE_INTEGER.toString());
+      dialog?.close();
+    });
 
     close?.addEventListener("click", () => {
       localStorage.setItem(POPUP_NEXT_SHOW, (TIME_NOW + ONE_DAY).toString());
