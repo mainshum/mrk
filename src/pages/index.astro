@@ -1,12 +1,19 @@
 ---
-import Bezpestkowe from '../components/Bezpestkowe.astro';
+import Bezpestkowe from "../components/Bezpestkowe.astro";
 ---
+
 <style>
-	.dr-buttons {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 16px;
-	}
+  .dr-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 </style>
 
 <Bezpestkowe lang="pl" />
+<dialog open>
+  <p>Greetings, one and all!</p>
+  <form method="dialog">
+    <button>OK</button>
+  </form>
+</dialog>

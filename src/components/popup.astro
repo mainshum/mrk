@@ -1,0 +1,69 @@
+<dialog>
+  <h1>Dołącz do grona przyjaciół bezpestkowych</h1>
+  <p>
+    Swoje wsparcie mozesz wyrazic na wiele sposobow - jednym z nich bedzie
+    zapisanie sie do naszego newslettera, w ktorym bedziemy na biezaco
+    informowac Cie o dzialaniach naszej fundacji!
+  </p>
+  <a href="https://actionnetwork.org/forms/forma-testowa"
+    >Zapisz się do naszego newslettera</a
+  >
+</dialog>
+<button autofocus>show</button>
+
+<style>
+  h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #f6892a;
+  }
+  p {
+    font-size: 2.5rem;
+    color: rgb(102, 20, 181);
+  }
+  a {
+    font-size: 2.5rem;
+    color: #f6892a;
+    background-color: rgb(102, 20, 181);
+    padding: 4px 40px;
+    width: fit-content;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  dialog[open] {
+    display: flex;
+  }
+  dialog {
+    padding: 48px 96px;
+    transform: translateY(calc(50vh - 50%));
+    flex-direction: column;
+    border-radius: 8px;
+    gap: 23px;
+    width: 1120px;
+    margin: 0 auto;
+    border-left: none;
+    border-right: none;
+    border-top: 10px solid #f6892a;
+    border-bottom: 10px solid #f6892a;
+  }
+  dialog::backdrop {
+    background: rgb(208, 166, 244);
+    opacity: 0.9;
+  }
+</style>
+
+<script>
+  const dialog = document.querySelector("dialog");
+  const showButton = document.querySelector("dialog + button");
+  const closeButton = document.querySelector("dialog button");
+
+  // "Show the dialog" button opens the dialog modally
+  showButton?.addEventListener("click", () => {
+    dialog?.showModal();
+  });
+
+  // "Close" button closes the dialog
+  closeButton?.addEventListener("click", () => {
+    dialog?.close();
+  });
+</script>
