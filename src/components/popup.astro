@@ -5,11 +5,11 @@
     zapisanie sie do naszego newslettera, w ktorym bedziemy na biezaco
     informowac Cie o dzialaniach naszej fundacji!
   </p>
-  <a href="https://actionnetwork.org/forms/forma-testowa"
+  <a
+    href="https://actionnetwork.org/forms/chce-dolaczyc-do-grona-przyjaciol-bezpestkowych/"
     >Zapisz się do naszego newslettera</a
   >
 </dialog>
-<button autofocus>show</button>
 
 <style>
   h1 {
@@ -35,7 +35,7 @@
   }
   dialog {
     padding: 48px 96px;
-    transform: translateY(calc(50vh - 50%));
+    transform: translateY(100px);
     flex-direction: column;
     border-radius: 8px;
     gap: 23px;
@@ -54,16 +54,8 @@
 
 <script>
   const dialog = document.querySelector("dialog");
-  const showButton = document.querySelector("dialog + button");
-  const closeButton = document.querySelector("dialog button");
 
-  // "Show the dialog" button opens the dialog modally
-  showButton?.addEventListener("click", () => {
+  setTimeout(() => {
     dialog?.showModal();
-  });
-
-  // "Close" button closes the dialog
-  closeButton?.addEventListener("click", () => {
-    dialog?.close();
-  });
+  }, 1000);
 </script>
