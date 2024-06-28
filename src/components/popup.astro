@@ -1,4 +1,5 @@
 <dialog>
+  <button>&#x2715;</button>
   <h1>Dołącz do grona przyjaciół bezpestkowych</h1>
   <p>
     Swoje wsparcie mozesz wyrazic na wiele sposobow - jednym z nich bedzie
@@ -6,6 +7,7 @@
     informowac Cie o dzialaniach naszej fundacji!
   </p>
   <a
+    autofocus
     href="https://actionnetwork.org/forms/chce-dolaczyc-do-grona-przyjaciol-bezpestkowych/"
     >Zapisz się do naszego newslettera</a
   >
@@ -16,6 +18,20 @@
     font-size: 3.5em;
     font-weight: bold;
     color: #f6892a;
+  }
+  button {
+    position: absolute;
+    font-size: 1.5rem;
+    right: 10px;
+    top: -26px;
+    z-index: 2;
+    background-image: url("public/pestka.svg");
+    color: #f6892a;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    height: 46px;
+    width: 50px;
+    border: none;
   }
   p {
     font-size: 2.5em;
@@ -35,9 +51,11 @@
     display: flex;
   }
   dialog {
+    overflow: visible;
+    position: relative;
     font-size: 0.7rem;
     padding: 24px 48px;
-    transform: translateY(100px);
+    transform: translateY(99px);
     flex-direction: column;
     border-radius: 8px;
     gap: 24px;
@@ -45,8 +63,8 @@
     margin: 0 auto;
     border-left: none;
     border-right: none;
-    border-top: 10px solid #f6892a;
-    border-bottom: 10px solid #f6892a;
+    border-top: 3px solid #f6892a;
+    border-bottom: 3px solid #f6892a;
   }
   @media (min-width: 480px) {
     a {
@@ -62,6 +80,10 @@
     dialog {
       padding: 48px 96px;
     }
+    button {
+      scale: 1.5;
+      top: -78px;
+    }
   }
   dialog::backdrop {
     background: rgb(208, 166, 244);
@@ -71,8 +93,13 @@
 
 <script>
   const dialog = document.querySelector("dialog");
+  const close = document.querySelector("dialog button");
 
   setTimeout(() => {
     dialog?.showModal();
-  }, 3000);
+  }, 1000);
+
+  close?.addEventListener("click", () => {
+    dialog?.close();
+  });
 </script>
