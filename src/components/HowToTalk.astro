@@ -306,7 +306,13 @@ const trans = temp[lang];
 </style>
 <Page color="violet">
     <Header slot="header">
-        <PageTitle slot='lhs' title={trans.header}></PageTitle>
+        <PageTitle slot='lhs' title={trans.header}/>
+        <Pestka Parent='button' isOrange={true} slot='rhs' alt="Pobierz pdf" width={75}>
+           <a class="pestka" href="badania.pdf" download="Badanie dotyczące komunikacji lekarzy z pacjentami">
+                <div class="icon-download"></div>
+                <div class="pdf">pdf</div>
+            </a>
+        </Pestka>
     </Header>
     <div class="body pad-body" slot="body">
         <section class="first-section">
