@@ -8,6 +8,7 @@ import {Image} from '@astrojs/image/components';
 import anatomy from '@images/anatomy.png';
 import marrow from '@images/marrow.png';
 import dildo from '@images/dildo.png';
+import PestkaPdf from './PestkaPdf.astro';
 
 interface Props {
     lang: Lang
@@ -319,9 +320,6 @@ const broszuraLink = `broszura_${lang}.pdf`;
         gap: 40px;
         padding-top: 20px;
     }
-    .pdf {
-        font-size: var(--font-mini);
-    }
     .orange {
         color: var(--orange-color);
     }
@@ -408,12 +406,7 @@ const broszuraLink = `broszura_${lang}.pdf`;
 <Page color="white">
     <Header slot="header">
         <PageTitle slot='lhs' title={trans.header}/>
-        <Pestka Parent='button' isOrange={true} slot='rhs' alt="Pobierz pdf" width={75}>
-           <a class="pestka" href={broszuraLink} download="Broszura.pdf">
-                <div class="icon-download"></div>
-                <div class="pdf">pdf</div>
-            </a>
-        </Pestka>
+        {lang !== 'fr' && <PestkaPdf slot='rhs' href={broszuraLink} download='Broszura.pdf'/>}
     </Header>
     <div class="body pad-body" slot="body">
         <section class="flex top">
